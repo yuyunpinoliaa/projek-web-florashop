@@ -1,0 +1,75 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f7fbff;
+}
+
+/* Navbar */
+.navbar{
+    background:#b7d7f2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+}
+
+.logo h2{
+    color:#2f5f8f;
+}
+
+.menu{
+    display:flex;
+    list-style:none;
+}
+
+.menu li{
+    margin-left:20px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#2f5f8f;
+    font-weight:bold;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    color:#2f5f8f;
+    margin-bottom:20px;
+}
+
+.hero p{
+    margin-bottom:20px;
+}
+
+.btn{
+    background:#8bbbe8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* About */
+.about{
+    padding:50px;
+    text-align:center;
+}
+
+/* Footer */
+.footer{
+    background:#b7d7f2;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
