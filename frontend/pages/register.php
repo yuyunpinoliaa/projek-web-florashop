@@ -29,37 +29,137 @@ if(isset($_POST['register'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Florashop</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Poppins,sans-serif;
+        }
+
+        body{
+            background:#EAF4FF;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        .register-card{
+            background:white;
+            width:420px;
+            padding:35px;
+            border-radius:20px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .register-card h2{
+            text-align:center;
+            color:#4A6FA5;
+            margin-bottom:25px;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:8px;
+            color:#4A6FA5;
+            font-weight:600;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #CFE8FF;
+            border-radius:10px;
+            outline:none;
+        }
+
+        input:focus{
+            border-color:#6FA8DC;
+        }
+
+        button{
+            width:100%;
+            margin-top:25px;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:#6FA8DC;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            opacity:0.9;
+        }
+
+        .message{
+            background:#EAF4FF;
+            color:#4A6FA5;
+            padding:10px;
+            border-radius:10px;
+            text-align:center;
+            margin-bottom:15px;
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:20px;
+        }
+
+        .login-link a{
+            color:#4A6FA5;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+    </style>
+
 </head>
 <body>
 
-<h2>Register</h2>
+<div class="register-card">
 
-<p><?php echo $message; ?></p>
+    <h2>🌸 Daftar Akun Florashop</h2>
 
-<form method="POST">
+    <?php if($message != ""){ ?>
+        <div class="message">
+            <?php echo $message; ?>
+        </div>
+    <?php } ?>
 
-    <label>Nama</label><br>
-    <input type="text" name="nama" required><br><br>
+    <form method="POST">
 
-    <label>Email</label><br>
-    <input type="email" name="email" required><br><br>
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" required>
 
-    <label>Password</label><br>
-    <input type="password" name="password" required><br><br>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-    <button type="submit" name="register">
-        Daftar
-    </button>
+        <label>Password</label>
+        <input type="password" name="password" required>
 
-</form>
+        <button type="submit" name="register">
+            Daftar Sekarang
+        </button>
 
-<p>
-    Sudah punya akun?
-    <a href="login.php">Login</a>
-</p>
+    </form>
+
+    <div class="login-link">
+        Sudah punya akun?
+        <a href="login.php">Login di sini</a>
+    </div>
+
+</div>
 
 </body>
 </html>
