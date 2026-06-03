@@ -2,24 +2,27 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family:Poppins,sans-serif;
 }
 
 body{
-    background:#f7fbff;
+    background:#EAF4FF;
 }
 
 /* Navbar */
+
 .navbar{
-    background:#b7d7f2;
+    background:#CFE8FF;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 50px;
+    padding:20px 60px;
 }
 
-.logo h2{
-    color:#2f5f8f;
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#4A6FA5;
 }
 
 .menu{
@@ -28,48 +31,84 @@ body{
 }
 
 .menu li{
-    margin-left:20px;
+    margin-left:25px;
 }
 
 .menu a{
     text-decoration:none;
-    color:#2f5f8f;
-    font-weight:bold;
+    color:#4A6FA5;
+    font-weight:600;
 }
 
 /* Hero */
+
 .hero{
     text-align:center;
     padding:100px 20px;
 }
 
 .hero h1{
-    color:#2f5f8f;
+    color:#4A6FA5;
     margin-bottom:20px;
+    font-size:42px;
 }
 
 .hero p{
-    margin-bottom:20px;
+    margin-bottom:25px;
+    color:#555;
 }
 
-.btn{
-    background:#8bbbe8;
+.hero button{
+    background:#6FA8DC;
     color:white;
-    padding:12px 25px;
-    border-radius:8px;
-    text-decoration:none;
+    border:none;
+    padding:15px 35px;
+    border-radius:30px;
+    cursor:pointer;
 }
 
-/* About */
-.about{
-    padding:50px;
+/* Produk */
+
+.produk{
+    padding:60px;
+}
+
+.produk h2{
     text-align:center;
+    color:#4A6FA5;
+    margin-bottom:40px;
+}
+
+.produk-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+.card{
+    background:white;
+    width:250px;
+    padding:15px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+}
+
+.card h3{
+    margin-top:10px;
+    color:#4A6FA5;
 }
 
 /* Footer */
+
 .footer{
-    background:#b7d7f2;
+    background:#CFE8FF;
     text-align:center;
-    padding:20px;
-    margin-top:50px;
+    padding:30px;
+    margin-top:60px;
 }

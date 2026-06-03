@@ -1,3 +1,11 @@
 <footer class="footer">
-    <p>&copy; 2026 Florashop. All Rights Reserved.</p>
+    <h3>🌷 Florashop</h3>
+
+    <p>
+        Toko bunga online untuk setiap momen spesialmu 💙
+    </p>
+
+    <p>
+        © 2026 Florashop
+    </p>
 </footer>

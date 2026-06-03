@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="logo">
-        <h2>Florashop</h2>
+        🌸 Florashop
     </div>
 
     <ul class="menu">
