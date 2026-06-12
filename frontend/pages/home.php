@@ -143,9 +143,9 @@
     <button class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim" aria-label="Keranjang">
       <span class="material-symbols-outlined">shopping_cart</span>
     </button>
-    <button class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim" aria-label="Profil">
+    <a href="login.php" class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim inline-block" aria-label="Profil">
       <span class="material-symbols-outlined">person</span>
-    </button>
+    </a>
   </div>
 </header>
 
