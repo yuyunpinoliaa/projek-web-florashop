@@ -1,0 +1,140 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Florashop - Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .flower-float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-primary-fixed-variant": "#85145a", "secondary-container": "#e7dde3", "surface-container": "#e6eeff",
+                    "tertiary-container": "#51b269", "on-primary": "#ffffff", "outline-variant": "#dac0c9", "outline": "#87717a",
+                    "on-secondary-fixed-variant": "#4b454a", "inverse-surface": "#27313f", "on-tertiary-fixed-variant": "#005323",
+                    "surface-container-low": "#eff4ff", "inverse-on-surface": "#eaf1ff", "on-primary-container": "#6d0047",
+                    "secondary-fixed-dim": "#cec4ca", "secondary-fixed": "#eae0e6", "surface": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff", "surface-tint": "#a43073", "surface-dim": "#d0dbed",
+                    "on-error": "#ffffff", "on-tertiary-container": "#004019", "error-container": "#ffdad6",
+                    "primary-fixed": "#ffd8e7", "surface-container-high": "#dee9fc", "on-tertiary-fixed": "#00210a",
+                    "on-surface": "#121c2a", "primary-fixed-dim": "#ffafd3", "primary": "#a43073", "error": "#ba1a1a",
+                    "inverse-primary": "#ffafd3", "background": "#f8f9ff", "on-secondary": "#ffffff", "tertiary": "#006d30",
+                    "surface-variant": "#d9e3f6", "on-background": "#121c2a", "secondary": "#635c61",
+                    "primary-container": "#f472b6", "on-secondary-fixed": "#1f1a1e", "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#544249", "on-primary-fixed": "#3d0026", "on-error-container": "#93000a",
+                    "surface-container-highest": "#d9e3f6", "tertiary-fixed-dim": "#79db8d", "on-secondary-container": "#686066",
+                    "surface-bright": "#f8f9ff", "tertiary-fixed": "#95f8a7"
+                },
+                "fontFamily": {
+                    "headline-md": ["Literata"], "headline-lg": ["Literata"], "headline-lg-mobile": ["Literata"],
+                    "display-lg": ["Literata"], "label-sm": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"]
+                },
+                "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                }
+            }
+        }
+    }
+</script>
+<style> body { min-height: max(884px, 100dvh); } </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<main class="relative min-h-screen flex items-center justify-center px-4 py-10 overflow-hidden">
+<div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-[100px]"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-tertiary-fixed opacity-10 rounded-full blur-[100px]"></div>
+</div>
+
+<div class="relative z-10 w-full max-w-[440px] fade-in">
+    <div class="glass-panel rounded-[32px] p-6 sm:p-10 shadow-[0px_4px_20px_rgba(244,114,182,0.08)] border border-white/40">
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mb-4 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-[32px]" data-weight="fill">local_florist</span>
+            </div>
+            <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">Florashop</h1>
+            <p class="text-secondary font-label-md text-label-md mt-1">Curating moments of beauty</p>
+        </div>
+
+        <div class="flex p-1 bg-secondary-fixed/30 rounded-full mb-8">
+            <a href="login.php" class="flex-1 text-center py-2 px-4 rounded-full font-label-md text-label-md transition-all duration-300 text-secondary hover:text-primary block">Sign In</a>
+            <a href="register.php" class="flex-1 text-center py-2 px-4 rounded-full font-label-md text-label-md transition-all duration-300 bg-white text-primary shadow-sm block">Create Account</a>
+        </div>
+
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="mb-6 p-3 bg-error-container text-on-error-container rounded-lg text-center text-sm font-medium">
+                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
+
+        <form class="space-y-6 transition-opacity duration-300" action="../../backend/auth/proses_register.php" method="POST">
+            <div class="space-y-2">
+                <label class="font-label-md text-label-md text-secondary ml-1" for="fullName">Full Name</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
+                    <input class="w-full pl-[48px] pr-4 py-3 bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50 font-body-md text-body-md" id="fullName" name="fullName" placeholder="Jane Doe" type="text" required/>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label class="font-label-md text-label-md text-secondary ml-1" for="regEmail">Email Address</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+                    <input class="w-full pl-[48px] pr-4 py-3 bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50 font-body-md text-body-md" id="regEmail" name="email" placeholder="hello@example.com" type="email" required/>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label class="font-label-md text-label-md text-secondary ml-1" for="regPassword">Password</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+                    <input class="w-full pl-[48px] pr-4 py-3 bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50 font-body-md text-body-md" id="regPassword" name="password" placeholder="Minimum 8 characters" type="password" required minlength="8"/>
+                </div>
+            </div>
+            
+            <p class="font-label-sm text-label-sm text-secondary px-1">By signing up, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.</p>
+            
+            <button class="w-full mt-8 py-3 bg-primary text-on-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-on-primary-fixed-variant active:scale-[0.98] transition-all transform duration-200" type="submit">
+                Create Account
+            </button>
+        </form>
+
+        <div class="mt-8">
+            <div class="relative flex items-center justify-center mb-6">
+                <div class="w-full border-t border-outline-variant/30"></div>
+                <span class="bg-white/70 backdrop-blur-sm px-4 text-secondary font-label-sm text-label-sm absolute">Or continue with</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center space-x-2 py-2 border border-outline-variant/40 rounded-full bg-white/50 hover:bg-white hover:shadow-sm transition-all duration-200">
+                    <span class="font-label-md text-label-md text-secondary">Google</span>
+                </button>
+                <button class="flex items-center justify-center space-x-2 py-2 border border-outline-variant/40 rounded-full bg-white/50 hover:bg-white hover:shadow-sm transition-all duration-200">
+                    <span class="font-label-md text-label-md text-secondary">Facebook</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <p class="text-center mt-8 text-secondary font-label-md text-label-md">
+        Need help? <a class="text-primary font-semibold hover:underline" href="#">Contact Florist Support</a>
+    </p>
+</div>
+</main>
+</body>
+</html>
