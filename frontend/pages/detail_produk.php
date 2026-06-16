@@ -115,7 +115,7 @@ require_once '../../backend/produk/get_detail_produk.php';
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden">
 
-    <?php include_once '../includes/navbar.php'; ?>
+    <?php include_once '../components/navbar.php'; ?>
 
     <main class="max-w-[1200px] mx-auto px-md md:px-lg py-md mb-xxl">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-start">
@@ -135,7 +135,7 @@ require_once '../../backend/produk/get_detail_produk.php';
                                 <img class="w-full h-full object-cover" src="<?php echo $img_url; ?>" alt="Thumbnail <?php echo $index; ?>"/>
                             </div>
                         <?php endif; ?>
-                    <?php endphp; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -247,7 +247,7 @@ require_once '../../backend/produk/get_detail_produk.php';
         </section>
     </main>
 
-    <?php include_once '../includes/footer.php'; ?>
+    <?php include_once '../components/footer.php'; ?>
 
     <script>
         // Mengubah nilai kuantitas via input angka langsung/tombol increment
@@ -273,3 +273,5 @@ require_once '../../backend/produk/get_detail_produk.php';
             }
         }
     </script>
+</body>
+</html>
