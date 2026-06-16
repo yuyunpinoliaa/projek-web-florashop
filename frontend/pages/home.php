@@ -129,7 +129,7 @@ $products = [
 </head>
 <body class="font-body-md text-on-surface antialiased">
 
-    <?php include_once '../includes/navbar.php'; ?>
+    <?php include_once '../components/navbar.php'; ?>
 
     <main class="max-w-container-max mx-auto pb-xxl">
         
@@ -199,4 +199,4 @@ $products = [
         </section>
     </main>
 
-    <?php include_once '../includes/footer.php'; ?>
+    <?php include_once '../components/footer.php'; ?>
