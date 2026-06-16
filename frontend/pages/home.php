@@ -1,431 +1,202 @@
+<?php
+// frontend/pages/home.php
+
+// Data dummy Kategori (Bisa diganti dengan query database nantinya)
+$categories = [
+    ['name' => 'Bouquets', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtFTmSEeldL8iMqM9-OjD3B2E5nOiHsvGXf2-z30HhKLgJI314jK0Lwyo5Mj0EEPuN0DCALO6DZ3IkfGXnDAkSPapRdQnWoo4AumJvDXNFTUVn_OfMXaqnasy4tj4YbwsBLk9-RgMRu2ZScnGtEgLHk7nLBCflrYUCfZmYpmkSNJ_BBRrMDzb5R7fMhA4ZpGdawzBZ5FcFzTSQHHotmWbBsqitcV0qPxp6L3k0C5NNvckpau7pWfLXB0xF4lgckVGQp2pBn294YRI'],
+    ['name' => 'Indoor Plants', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuD2ywBKNnDGFzGm_XzN9gzV6SFDCjBJB6czgd2_AimDyJm1BfJM5b6XHO2nGA1axRn7UZU0wgxh5NRqb50TWWfk79sCJIfVT62rtOXFfZUuD4fX8r7_u8clFBiYgBiRAnhFBOCt-A8sp7NtX5M5yjGM8YcZT2qGjgNYVvz-vOXOakQ05KBJuWmKyWykLkKq3ZgPaFPzl2VQXnJmj2vfhYYDIGsWKsFfSmjRyzdJiX-y3Ln6g_QoBstEFk1I6OM_G_zpmtxZaiEo9c4'],
+    ['name' => 'Wedding', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6cyLRJtNKBgAbjYtCoUuZp6Q0jhmQWy_8dZUZayxjBvJoyj74Wo0a_SOQZekRjiRiNnY5jxXaMPyuKZ9RPO8WOXcnTmzqrWdO1o8OCD_80QdbJSBw3704lTbRDxcZ9k_WsF2hQzU33hqhrdbjG7C-2yOt4rKuBx8Llwodq85_HNmJqKCQ-OKDDrVYHHCyUc1RPQnznO3G4YhevTVwYArBXhUWtnxnFAwkKgMHBpr4SxUBmrH52x01_PN5pjsB_vbhCt009CV51ug'],
+    ['name' => 'Seasonal', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtUhoikHRQ-9qp1KAdv5KKgN3TELln3jnfAj7PezNqBck7PUwjFJ98cFRwPz5FfXL0Px2Q0MeAcW4ts7zb3FJrfkQq7PPog9Qv5Rq6TVHA9hGGLbsFbM-1hW0WGsU2zk0jJZvkKwzVg78cjMqdl973uSm5sesBnVj1GOpv3U1v8Dx2GQ9mr2s-gKH6IB3lUzRXndEWp5YaEkeYy4ZTg3bvd8h7p_0h5v7ekfw6H0Ds5Kk8rv7X3OFLBR6-iXWd76LP6gPa80oxMr8'],
+    ['name' => 'Gardening', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCokKk70D-V0lSBCnNySLIm78fP1LYgoAUu6m_2h2djSUrW8ZA1cVp0dJcH7VVoGLubaMZ3Xd9Sob9PpIbdaVZNIlkFaOqoJA_cAQ292oKOZl5nEO1_QyHdqAeV_a70ujxwkPRhnF6wEeYtzYSK-zBiqjTnoXY8GGbD_CCXRDFXsuVl_jBovB40_NgqL_qc8iNJRgZbVew3Xs6aJ8ahW_ZszIMHHfhZ_DC0fFdHsOOPt_MtOD-Upn591qPvpLahLpoTJFATVGJgAuo']
+];
+
+// Data dummy Produk Unggulan
+$products = [
+    ['name' => 'Blushing Tulips', 'price' => 45.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuASqqs3rKVd7NKNOS6L0zBRjg3cIRBGpBw-fS0t4RIVi-OJ24CLVEOLOICuci_o-LSGsGuXBvFv3nWuJrHyOqCH-j0uvsK0dgyHLnXHcqdLHj_KG2OL8hW9SsKaruPqjs4Sak0Ow1QfwC8I_ylQBfNH4M8zQAKtzH2kiQEVW3QvXSebEm0Bl8vBkRwtWSxbVaIW3vIlaicASYGCgs_sHpMhZ-o8myWnLtIjbqDwjIEDGxyK5Mp5UG_dqSDePpfbGn0jfwwALhUFGtw'],
+    ['name' => 'Velvet Roses', 'price' => 89.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKJiP19N6C2z0e42aMEi482IuS5xWldVftZ8Ki4FRILYbtbgLvbK1zoOg-wiCxxjVDEK76Ij4NlOUgrpiXeak263S52TfPRxhpivpEdwJLPDsP8kJCt5xw9ckAcUMIkV1i2-mALc72h8qZcLZ9xWJAaZkGxe2Z67e5VUO6kLRJGFqJWfCJLI8EVVA8HHBv_zFHtWVwCYvlvjDDGZzNk7TGR7ze31Vf1g3XLN52g97kh-OxbuFCVYalaz1oVuh5eNG5UXZz-myUpHo'],
+    ['name' => 'Swiss Cheese Plant', 'price' => 32.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM'],
+    ['name' => 'Wild Meadow', 'price' => 55.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBk0u-8UvYmvq-HP2OjlLcMcZ7hNBQ50fHX6rGi6m_empd7chGdTTjeKevegRFp4xv6zVfKCNwHpxaC_qD2f_uzO-Vjtwj6V3p5uKZ_rBL2Qwbc5cE2W6-N5BQKeZ2GIQtC3PI6GVipLuw0mXvNGbvYUcl3c6YxgSElasLJbsH7D9GnHvLRbn_4aGZ-MNmqo69-DP5fUlcELxduAnSiBKmC7XEcsO685QvjG3J7tpEDDue23beMlFGJqqXtuuuWbH2bMwnf7SrZXA']
+];
+?>
 <!DOCTYPE html>
-<html class="light" lang="id">
+<html class="light" lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Florashop - Keindahan di Setiap Kelopak</title>
-  <meta name="description" content="Koleksi kurasi terbaik dari kelopak bunga segar pilihan untuk setiap momen berharga Anda."/>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "error-container": "#ffdad6",
-            "surface": "#fcf8f9",
-            "surface-container-lowest": "#ffffff",
-            "on-tertiary-fixed-variant": "#274f2c",
-            "primary-container": "#ffc0cb",
-            "on-secondary": "#ffffff",
-            "on-secondary-fixed-variant": "#8a005d",
-            "on-primary-fixed": "#330f19",
-            "on-tertiary-fixed": "#002107",
-            "tertiary": "#3e6842",
-            "on-primary-fixed-variant": "#663a43",
-            "secondary-fixed-dim": "#ffafd4",
-            "surface-tint": "#81515a",
-            "on-primary": "#ffffff",
-            "background": "#fcf8f9",
-            "on-secondary-fixed": "#3d0027",
-            "on-error-container": "#93000a",
-            "inverse-on-surface": "#f3f0f1",
-            "surface-container-low": "#f6f3f4",
-            "tertiary-fixed-dim": "#a4d2a4",
-            "on-tertiary-container": "#39623d",
-            "on-surface-variant": "#514345",
-            "outline-variant": "#d5c2c4",
-            "inverse-primary": "#f4b6c1",
-            "secondary-fixed": "#ffd8e7",
-            "on-background": "#1b1b1c",
-            "surface-container": "#f0edee",
-            "on-primary-container": "#7b4b55",
-            "surface-container-highest": "#e4e2e3",
-            "on-error": "#ffffff",
-            "primary": "#81515a",
-            "outline": "#837375",
-            "tertiary-container": "#aedcad",
-            "tertiary-fixed": "#bfefbe",
-            "on-secondary-container": "#5b003c",
-            "on-surface": "#1b1b1c",
-            "secondary-container": "#fd4bb4",
-            "error": "#ba1a1a",
-            "surface-variant": "#e4e2e3",
-            "surface-container-high": "#eae7e8",
-            "on-tertiary": "#ffffff",
-            "surface-bright": "#fcf8f9",
-            "primary-fixed-dim": "#f4b6c1",
-            "secondary": "#b5007b",
-            "primary-fixed": "#ffd9df",
-            "surface-dim": "#dcd9da",
-            "inverse-surface": "#303031"
-          },
-          "borderRadius": {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          "spacing": {
-            "margin-desktop": "64px",
-            "unit": "8px",
-            "container-max": "1280px",
-            "gutter": "24px",
-            "margin-mobile": "20px"
-          },
-          "fontFamily": {
-            "headline-md-mobile": ["Playfair Display"],
-            "title-lg": ["Playfair Display"],
-            "label-md": ["Inter"],
-            "display-lg-mobile": ["Playfair Display"],
-            "display-lg": ["Playfair Display"],
-            "headline-md": ["Playfair Display"],
-            "body-lg": ["Inter"],
-            "label-sm": ["Inter"],
-            "body-md": ["Inter"]
-          },
-          "fontSize": {
-            "headline-md-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
-            "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
-            "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
-            "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
-            "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-            "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-            "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
-            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
-          }
-        },
-      },
-    }
-  </script>
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-    .ambient-shadow {
-      box-shadow: 0px 4px 20px rgba(208, 32, 144, 0.05);
-    }
-    .high-elevation {
-      box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.08);
-    }
-    .glass-modal {
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.7);
-    }
-    body {
-      background-color: #fcf8f9;
-      scroll-behavior: smooth;
-    }
-    .zoom-hover:hover img {
-      transform: scale(1.05);
-    }
-  </style>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Florashop | Fresh Blooms for Every Moment</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="../../assets/css/home.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#85145a",
+                        "secondary-container": "#e7dde3",
+                        "surface-container": "#e6eeff",
+                        "tertiary-container": "#51b269",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dac0c9",
+                        "outline": "#87717a",
+                        "on-secondary-fixed-variant": "#4b454a",
+                        "inverse-surface": "#27313f",
+                        "on-tertiary-fixed-variant": "#005323",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#6d0047",
+                        "secondary-fixed-dim": "#cec4ca",
+                        "secondary-fixed": "#eae0e6",
+                        "surface": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#a43073",
+                        "surface-dim": "#d0dbed",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#004019",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffd8e7",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-fixed": "#00210a",
+                        "on-surface": "#121c2a",
+                        "primary-fixed-dim": "#ffafd3",
+                        "primary": "#a43073",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#ffafd3",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#006d30",
+                        "surface-variant": "#d9e3f6",
+                        "on-background": "#121c2a",
+                        "secondary": "#635c61",
+                        "primary-container": "#f472b6",
+                        "on-secondary-fixed": "#1f1a1e",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#544249",
+                        "on-primary-fixed": "#3d0026",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d9e3f6",
+                        "tertiary-fixed-dim": "#79db8d",
+                        "on-secondary-container": "#686066",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#95f8a7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xxl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Literata"],
+                        "headline-lg": ["Literata"],
+                        "headline-lg-mobile": ["Literata"],
+                        "display-lg": ["Literata"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
 </head>
-<body class="font-body-md text-on-surface">
+<body class="font-body-md text-on-surface antialiased">
 
-<!-- TopNavBar -->
-<header class="bg-surface dark:bg-surface-container-low shadow-sm sticky top-0 z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full transition-all duration-300">
-  <div class="font-display-lg-mobile text-display-lg-mobile text-secondary dark:text-secondary-fixed-dim">
-    Florashop
-  </div>
-  <nav class="hidden md:flex gap-8 items-center">
-    <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Bouquet</a>
-    <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Bunga Meja</a>
-    <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-200" href="#">Papan Bunga</a>
-  </nav>
-  <div class="flex items-center gap-4">
-    <button class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim" aria-label="Riwayat">
-      <span class="material-symbols-outlined">history</span>
-    </button>
-    <button class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim" aria-label="Keranjang">
-      <span class="material-symbols-outlined">shopping_cart</span>
-    </button>
-    <button class="scale-105 transition-transform text-primary dark:text-primary-fixed-dim" aria-label="Profil">
-      <span class="material-symbols-outlined">person</span>
-    </button>
-  </div>
-</header>
+    <?php include_once '../includes/navbar.php'; ?>
 
-<main>
-  <!-- Hero Section / Promo Banner -->
-  <section class="relative w-full h-[500px] md:h-[700px] flex items-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <img
-        alt="Promo Banner: Rangkaian bunga mewah dengan mawar merah muda dan ranunculus krem"
-        class="w-full h-full object-cover"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkGoIYhauC9G0NfGyRT0eSp2K4Bd0OagZ4zlh9VAEga1LMYmDeL-tU12iFolc7ooQaMHq9OHDWj1pjG5tZSREx-NIYH2N5Ye1pUyg_e9hAhwqz0NDdOoY5K0He3f-b4-Z91YcKdCmig3jbgA0-B0VuNRHXdAhUrE_UHsnIjSuw1NivjwRMe3WQul09SDt3K2jlrS9hNht7PDM1xOLQ0nhVQjwXzF7N2aBhTImvm388eQrhRMB5yTlwcAhc1ZiZapHLgkwLk-IdW63h"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-surface/80 to-transparent"></div>
-    </div>
-    <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-2xl">
-      <span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full font-label-sm text-label-sm mb-4">EDISI MUSIM SEMI</span>
-      <h1 class="font-display-lg text-display-lg mb-6 text-on-surface">Ekspresikan Perasaan Melalui Keindahan Bunga</h1>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Koleksi kurasi terbaik dari kelopak bunga segar pilihan untuk setiap momen berharga Anda.</p>
-      <div class="flex gap-4 flex-wrap">
-        <button class="bg-secondary text-on-secondary px-8 py-3 rounded-full font-label-md text-label-md hover:scale-105 transition-transform shadow-md">
-          Belanja Sekarang
-        </button>
-        <button class="border border-secondary text-secondary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-secondary-fixed hover:scale-105 transition-transform">
-          Lihat Katalog
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Section (Bento Inspired) -->
-  <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="font-headline-md text-headline-md mb-2">Pilih Kategori Favorit</h2>
-      <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-auto md:h-[600px]">
-
-      <!-- Bouquet -->
-      <div class="md:col-span-8 group relative overflow-hidden rounded-2xl ambient-shadow zoom-hover">
-        <img
-          alt="Bouquet: Rangkaian bunga hand-tied dengan mawar dusty rose dan eucalyptus"
-          class="w-full h-full object-cover transition-transform duration-700"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj8c-xfU6PWAoBPL4OkL4MPiusnMn31_6EC-rNXkBb3TSbEC1u6Ys9grV780cpc77o8QHZnCtH5GZQl1mrhe67PbI8uLizWrf5XRIenwRk0KHPQoXF3r4ZEA1n6YkFmz21BeXWzidIPE8UsrS_YZbUeHt27RQ92y8ggPkRFcPJV3prGfZrXP4OHdVQF3o134pts2YM47gxexD6mNVoNYKEc-5eyie2DYWBhOZ3plx8nvBfkBLNMVkLqeM8ozyHF670xFOxx6sP919j"
-        />
-        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <h3 class="font-headline-md text-headline-md">Bouquet</h3>
-          <p class="font-label-md text-label-md opacity-90">Simbol Kasih Sayang yang Klasik</p>
-        </div>
-      </div>
-
-      <!-- Bunga Meja -->
-      <div class="md:col-span-4 group relative overflow-hidden rounded-2xl ambient-shadow zoom-hover">
-        <img
-          alt="Bunga Meja: Tulip kuning dan daisy putih dalam vas keramik minimalis"
-          class="w-full h-full object-cover transition-transform duration-700"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0zICDoyQVB05QuPTrE3JWBWdqF0GbuIrIRyKSEkaQTMV8Hf3C1zOHLAA64up3WQd00X4RQ8634USAYofFJQiNgvekxWEd0OKGrRamQ1y4GA_4SBvbOeMZQPeJnHw8ZMctG_kzd6wqqPsfwvUnVB4WZGIS4OpLY1ud2lUgSRcNfj7ckex69Ki4b1GseY5fLxquAOVxuWA3QGuz2jplHxDGdEK88z6CTCTQ_x9coYGCziBOVkdVVHI_6105Gcx4ZYYeFngAy4MlDyeD"
-        />
-        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <h3 class="font-headline-md text-headline-md">Bunga Meja</h3>
-          <p class="font-label-md text-label-md opacity-90">Hiasi Ruang dengan Segar</p>
-        </div>
-      </div>
-
-      <!-- Papan Bunga -->
-      <div class="md:col-span-12 group relative overflow-hidden rounded-2xl ambient-shadow zoom-hover h-64">
-        <img
-          alt="Papan Bunga: Papan bunga modern dengan anggrek dan lily putih"
-          class="w-full h-full object-cover transition-transform duration-700"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0YAgY9b0EBFQnkv8w3nvYcwC7u62nhHojkBGWhxhEcjqRzjzpnHMA7MJLRbaMDsrP7x3hqLRGhJcDwXfSeNLKXic-hruiqkDzXBDUQZeOI-AGbPi2VLQ_cfCqgY3s_GI6v-wftmRQE1l41HOdpbWmUk2_1vKF7PZmrvPSFvgv7k_7PkO273OezW-BPGVIRDJoZtxOzn7IbCTNZaFfJ1ASlPNjqyc8oY40yiYPvIovq5rxVQjgSD4ys0tMmwkz-bWwk0ve68NLGku3"
-        />
-        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <h3 class="font-headline-md text-headline-md">Papan Bunga</h3>
-          <p class="font-label-md text-label-md opacity-90">Ucapan yang Berkesan &amp; Megah</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Featured Products -->
-  <section class="py-24 bg-surface-container-low">
-    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-        <div>
-          <span class="text-primary font-label-md text-label-md tracking-widest uppercase">TERLARIS</span>
-          <h2 class="font-headline-md text-headline-md text-on-surface">Produk Unggulan Kami</h2>
-        </div>
-        <a class="text-secondary font-label-md text-label-md flex items-center gap-2 hover:underline" href="#">
-          Lihat Semua Produk
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </a>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
-
-        <!-- Product Card 1 -->
-        <div class="group">
-          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden ambient-shadow mb-4 bg-white">
-            <img
-              alt="Rose Amour: Bouquet Mawar Merah"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVxJNZzk_S4nr5x7XbztVLP-8lUv236Mv46_zcDao-FOUHEhiy7iZWrPNf18mXvt746p1074IfIi9szfvLPgamISKrUV4asblhSodEmVkq2phmB6ADPHVeAPn84N3mhN70tK88_mAxYo6GGuSeM1C1E5HN8IbgHcq9VG1cQOka2lN41nMlci0tKCDKWXmFNN-8B33RX6esZN3ir1DYa2VCIwQW0Mswg5uJfg67v_na8FhtVdgFikeCHm7Wt601UxI_0eL6CHAp8QvG"
-            />
-            <button class="absolute top-4 right-4 w-10 h-10 bg-white/80 glass-modal rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors" aria-label="Tambah ke wishlist">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <button class="w-full bg-secondary text-white py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-                Tambah
-              </button>
+    <main class="max-w-container-max mx-auto pb-xxl">
+        
+        <section class="px-md mt-md">
+            <div class="relative overflow-hidden rounded-xl bg-primary-container/10 aspect-[16/9] md:aspect-[21/9] flex items-center">
+                <img alt="Special Bouquet" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHcu9O2__0chVKJTiV2nFzo6jQ1CDlCPwg5HBCD_qT9GfaZK93W5r1X53YVG_k1H2EB4t1Fu9A-ULgsZfWhY_yCeUWP1eBMtfme46DX7NHl0csysM5BpVj5msi_6x_4NK0a4tkCxo-D61GRcJPsfQP4yMUYl1NdRXNVU8Ji253A6MyhkyOdVlwXh1xeft6lohijXnj8DQQ72rkOKNBQMOUS7tCrKIXDchXfm4bEBLjjlqvmvRa_inIEfbXFHp07mv1vuCJTPhSIRc"/>
+                <div class="relative z-10 px-lg md:px-xl py-lg max-w-lg">
+                    <span class="font-label-md text-label-md text-on-primary-container bg-primary-fixed/50 px-3 py-1 rounded-full mb-4 inline-block">LIMITED EDITION</span>
+                    <h2 class="font-display-lg text-display-lg text-on-primary-container mb-4">The Morning Muse</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Experience the freshness of hand-picked seasonal blooms delivered to your door.</p>
+                    <button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-md rounded-full shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                        Shop Special Bouquet
+                    </button>
+                </div>
             </div>
-          </div>
-          <h4 class="font-title-lg text-title-lg text-on-surface mb-1">Rose Amour</h4>
-          <p class="font-label-md text-label-md text-on-surface-variant mb-2">Bouquet Mawar Merah</p>
-          <p class="font-title-lg text-title-lg text-secondary">Rp 450.000</p>
-        </div>
+        </section>
 
-        <!-- Product Card 2 -->
-        <div class="group">
-          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden ambient-shadow mb-4 bg-white">
-            <img
-              alt="White Serenity: Bunga Meja Lily"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnHpe3eZ1Qt1TLpxuoc1DzFnL-CvL7GkTzj7VYNDBc1jYfk0r_PvbDPbnEmKuNYb2wVaDDCXTFpfLjnV2SlWLSmG6pKzK1o9SBM81nvaduzEQYCYjhzi6S9BIW2kztoXGfOGWTLxEqkPVssOqZk3M2l-jpzssWJKOQMN3LD_P_HgFjxXNeJP6RAN2gsKXMofyXApxz5RTrIq7u35MAmY6eIQGWU5XS_k7dWUBYcZS5aW19WTl0L8xKwMXEyAAoirddruWKuS1VXXSE"
-            />
-            <button class="absolute top-4 right-4 w-10 h-10 bg-white/80 glass-modal rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors" aria-label="Tambah ke wishlist">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <button class="w-full bg-secondary text-white py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-                Tambah
-              </button>
+        <section class="mt-xl px-md">
+            <div class="flex justify-between items-center mb-lg">
+                <h3 class="font-headline-md text-headline-md text-on-surface">Categories</h3>
+                <button class="font-label-md text-label-md text-primary hover:underline">View All</button>
             </div>
-          </div>
-          <h4 class="font-title-lg text-title-lg text-on-surface mb-1">White Serenity</h4>
-          <p class="font-label-md text-label-md text-on-surface-variant mb-2">Bunga Meja Lily</p>
-          <p class="font-title-lg text-title-lg text-secondary">Rp 525.000</p>
-        </div>
-
-        <!-- Product Card 3 -->
-        <div class="group">
-          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden ambient-shadow mb-4 bg-white">
-            <img
-              alt="Pastel Dream: Bouquet Mix Pastel"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALWJ06-juW7PGPeIWbr-OmJyaTE8Mp3OnjF3AL562Ux5BmXZrxP9VWxANTQ_Ng9rrb3-7GC82of4mehl1vUFAWw9AYCRKPv3mf8YE25ahrZw84WOnrBaqocKd1mPfA-hAVJUFbvSAhD7wj68jPFPqlpPsSA3T4dmXi-uYrlasStb3EGlD5FkOkNsz7XSL9tBglA2Lc_yZlW_NyBBWJ8wUV6sLGbl5zN71EbDmKpXJNKIwDoa_rNPy8w2rwDgF6HKywNMFP51O38m1g"
-            />
-            <div class="absolute top-4 left-4 bg-tertiary text-white px-3 py-1 rounded-full font-label-sm text-label-sm">Bunga Segar</div>
-            <button class="absolute top-4 right-4 w-10 h-10 bg-white/80 glass-modal rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors" aria-label="Tambah ke wishlist">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <button class="w-full bg-secondary text-white py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-                Tambah
-              </button>
+            <div class="flex gap-lg overflow-x-auto pb-4 custom-scrollbar snap-x">
+                <?php foreach ($categories as $category): ?>
+                    <div class="flex-shrink-0 snap-start text-center group cursor-pointer">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-3 ring-2 ring-transparent group-hover:ring-primary/30 transition-all">
+                            <img alt="<?php echo htmlspecialchars($category['name']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="<?php echo $category['img']; ?>"/>
+                        </div>
+                        <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors"><?php echo htmlspecialchars($category['name']); ?></span>
+                    </div>
+                <?php endforeach; ?>
             </div>
-          </div>
-          <h4 class="font-title-lg text-title-lg text-on-surface mb-1">Pastel Dream</h4>
-          <p class="font-label-md text-label-md text-on-surface-variant mb-2">Bouquet Mix Pastel</p>
-          <p class="font-title-lg text-title-lg text-secondary">Rp 380.000</p>
-        </div>
+        </section>
 
-        <!-- Product Card 4 -->
-        <div class="group">
-          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden ambient-shadow mb-4 bg-white">
-            <img
-              alt="Golden Celebration: Papan Bunga Modern"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoHHVwZ7X2pr8Q_4YIbGVV4roUYcPQ8qFojUGkDRMkXPKpz6NpEuipDmzKGCcKFWNnvz230TyCqVUoVZEEHQokx-HnCvZ3EJvKmu7tAua6jcN9f7l3IzNBX4jsXywjpDplmIrcgZ6mryyWB4OvPDGeHvkIO9jiVqh4Afb2WWbgwaG_IANl-qzX0bGE00W7T_mrgWYFNkNFuTdyTVeVDMEwNJlVQ7VgxkUsRaRbBiRQz3jP5fsgRw_0yglekYULISTokNwPpE-j4aYA"
-            />
-            <div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Best Seller</div>
-            <button class="absolute top-4 right-4 w-10 h-10 bg-white/80 glass-modal rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors" aria-label="Tambah ke wishlist">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <button class="w-full bg-secondary text-white py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-                Tambah
-              </button>
+        <section class="mt-xl px-md">
+            <div class="flex justify-between items-center mb-lg">
+                <h3 class="font-headline-md text-headline-md text-on-surface">Featured Products</h3>
+                <div class="flex gap-2">
+                    <button class="material-symbols-outlined p-2 border border-outline-variant/30 rounded-full text-secondary hover:bg-primary/5" data-icon="chevron_left">chevron_left</button>
+                    <button class="material-symbols-outlined p-2 border border-outline-variant/30 rounded-full text-secondary hover:bg-primary/5" data-icon="chevron_right">chevron_right</button>
+                </div>
             </div>
-          </div>
-          <h4 class="font-title-lg text-title-lg text-on-surface mb-1">Golden Celebration</h4>
-          <p class="font-label-md text-label-md text-on-surface-variant mb-2">Papan Bunga Modern</p>
-          <p class="font-title-lg text-title-lg text-secondary">Rp 850.000</p>
-        </div>
 
-      </div>
-    </div>
-  </section>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg">
+                <?php foreach ($products as $product): ?>
+                    <div class="bg-surface group cursor-pointer relative">
+                        <div class="aspect-square rounded-xl overflow-hidden mb-md shadow-[0px_4px_20px_rgba(244,114,182,0.08)] group-hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)] transition-all">
+                            <img alt="<?php echo htmlspecialchars($product['name']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="<?php echo $product['img']; ?>"/>
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all scale-0 group-hover:scale-100 duration-300">
+                                <span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+                            </button>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-on-surface mb-1"><?php echo htmlspecialchars($product['name']); ?></h4>
+                        <p class="font-body-lg text-tertiary">$<?php echo number_format($product['price'], 2); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
 
-  <!-- Newsletter / CTA -->
-  <section class="py-24 px-margin-mobile md:px-margin-desktop">
-    <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden relative p-12 text-center bg-primary-container/30">
-      <div class="relative z-10">
-        <h2 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-on-primary-container mb-4">Dapatkan Penawaran Spesial</h2>
-        <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-lg mx-auto">Berlangganan newsletter kami untuk mendapatkan diskon 10% pada pesanan pertama dan update koleksi terbaru.</p>
-        <form id="newsletter-form" class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-          <input
-            class="flex-1 px-6 py-3 rounded-full border border-pink-200 focus:border-primary focus:ring-primary focus:ring-1 bg-white outline-none"
-            placeholder="Alamat email Anda"
-            type="email"
-            required
-          />
-          <button class="bg-secondary text-on-secondary px-8 py-3 rounded-full font-label-md text-label-md hover:scale-105 transition-transform" type="submit">
-            Langganan
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
+        <section class="mt-xxl mx-md py-xl bg-white rounded-3xl shadow-[0px_4px_20px_rgba(244,114,182,0.04)] text-center border border-pink-50">
+            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Join our Floral Circle</h3>
+            <p class="font-body-md text-secondary mb-8 max-w-md mx-auto">Subscribe for exclusive offers, floral care tips, and the first pick of our seasonal collections.</p>
+            <form action="" method="POST" class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
+                <input class="w-full md:flex-1 rounded-full border border-pink-100 bg-white px-6 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Your email address" type="email" name="email" required/>
+                <button type="submit" class="w-full md:w-auto bg-primary text-on-primary px-xl py-3 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">Subscribe</button>
+            </form>
+        </section>
+    </main>
 
-<!-- Footer -->
-<footer class="bg-surface-container-highest dark:bg-inverse-surface flex flex-col items-center py-12 px-margin-mobile gap-6">
-  <div class="font-title-lg text-title-lg text-primary">Florashop</div>
-  <div class="flex gap-8 flex-wrap justify-center">
-    <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Tentang Kami</a>
-    <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Kebijakan Privasi</a>
-    <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Hubungi Kami</a>
-  </div>
-  <div class="flex gap-4">
-    <button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary transition-all" aria-label="Share">
-      <span class="material-symbols-outlined text-[20px]">share</span>
-    </button>
-    <button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary transition-all" aria-label="Website">
-      <span class="material-symbols-outlined text-[20px]">public</span>
-    </button>
-    <button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary transition-all" aria-label="Email">
-      <span class="material-symbols-outlined text-[20px]">mail</span>
-    </button>
-  </div>
-  <div class="text-on-surface-variant font-label-sm text-label-sm mt-4">
-    © 2024 Florashop. Keindahan di Setiap Kelopak.
-  </div>
-</footer>
-
-<script>
-  // Micro-interactions untuk semua tombol
-  document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('mousedown', () => {
-      button.classList.add('scale-95');
-    });
-    button.addEventListener('mouseup', () => {
-      button.classList.remove('scale-95');
-    });
-  });
-
-  // Sticky header efek blur saat scroll
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 20) {
-      header.classList.add('shadow-md');
-      header.style.backgroundColor = 'rgba(252, 248, 249, 0.95)';
-      header.style.backdropFilter = 'blur(10px)';
-    } else {
-      header.classList.remove('shadow-md');
-      header.style.backgroundColor = '';
-      header.style.backdropFilter = '';
-    }
-  });
-
-  // Newsletter form
-  document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    const original = btn.textContent;
-    btn.textContent = 'Berhasil! ✓';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      e.target.reset();
-    }, 2000);
-  });
-</script>
-
-</body>
-</html>
+    <?php include_once '../includes/footer.php'; ?>
