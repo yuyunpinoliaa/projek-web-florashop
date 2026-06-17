@@ -12,10 +12,10 @@ $categories = [
 
 // Data dummy Produk Unggulan
 $products = [
-    ['name' => 'Blushing Tulips', 'price' => 45.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuASqqs3rKVd7NKNOS6L0zBRjg3cIRBGpBw-fS0t4RIVi-OJ24CLVEOLOICuci_o-LSGsGuXBvFv3nWuJrHyOqCH-j0uvsK0dgyHLnXHcqdLHj_KG2OL8hW9SsKaruPqjs4Sak0Ow1QfwC8I_ylQBfNH4M8zQAKtzH2kiQEVW3QvXSebEm0Bl8vBkRwtWSxbVaIW3vIlaicASYGCgs_sHpMhZ-o8myWnLtIjbqDwjIEDGxyK5Mp5UG_dqSDePpfbGn0jfwwALhUFGtw'],
-    ['name' => 'Velvet Roses', 'price' => 89.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKJiP19N6C2z0e42aMEi482IuS5xWldVftZ8Ki4FRILYbtbgLvbK1zoOg-wiCxxjVDEK76Ij4NlOUgrpiXeak263S52TfPRxhpivpEdwJLPDsP8kJCt5xw9ckAcUMIkV1i2-mALc72h8qZcLZ9xWJAaZkGxe2Z67e5VUO6kLRJGFqJWfCJLI8EVVA8HHBv_zFHtWVwCYvlvjDDGZzNk7TGR7ze31Vf1g3XLN52g97kh-OxbuFCVYalaz1oVuh5eNG5UXZz-myUpHo'],
-    ['name' => 'Swiss Cheese Plant', 'price' => 32.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM'],
-    ['name' => 'Wild Meadow', 'price' => 55.00, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBk0u-8UvYmvq-HP2OjlLcMcZ7hNBQ50fHX6rGi6m_empd7chGdTTjeKevegRFp4xv6zVfKCNwHpxaC_qD2f_uzO-Vjtwj6V3p5uKZ_rBL2Qwbc5cE2W6-N5BQKeZ2GIQtC3PI6GVipLuw0mXvNGbvYUcl3c6YxgSElasLJbsH7D9GnHvLRbn_4aGZ-MNmqo69-DP5fUlcELxduAnSiBKmC7XEcsO685QvjG3J7tpEDDue23beMlFGJqqXtuuuWbH2bMwnf7SrZXA']
+    ['name' => 'Blushing Tulips', 'price' => 45000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuASqqs3rKVd7NKNOS6L0zBRjg3cIRBGpBw-fS0t4RIVi-OJ24CLVEOLOICuci_o-LSGsGuXBvFv3nWuJrHyOqCH-j0uvsK0dgyHLnXHcqdLHj_KG2OL8hW9SsKaruPqjs4Sak0Ow1QfwC8I_ylQBfNH4M8zQAKtzH2kiQEVW3QvXSebEm0Bl8vBkRwtWSxbVaIW3vIlaicASYGCgs_sHpMhZ-o8myWnLtIjbqDwjIEDGxyK5Mp5UG_dqSDePpfbGn0jfwwALhUFGtw'],
+    ['name' => 'Velvet Roses', 'price' => 89000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKJiP19N6C2z0e42aMEi482IuS5xWldVftZ8Ki4FRILYbtbgLvbK1zoOg-wiCxxjVDEK76Ij4NlOUgrpiXeak263S52TfPRxhpivpEdwJLPDsP8kJCt5xw9ckAcUMIkV1i2-mALc72h8qZcLZ9xWJAaZkGxe2Z67e5VUO6kLRJGFqJWfCJLI8EVVA8HHBv_zFHtWVwCYvlvjDDGZzNk7TGR7ze31Vf1g3XLN52g97kh-OxbuFCVYalaz1oVuh5eNG5UXZz-myUpHo'],
+    ['name' => 'Swiss Cheese Plant', 'price' => 32000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM'],
+    ['name' => 'Wild Meadow', 'price' => 55000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBk0u-8UvYmvq-HP2OjlLcMcZ7hNBQ50fHX6rGi6m_empd7chGdTTjeKevegRFp4xv6zVfKCNwHpxaC_qD2f_uzO-Vjtwj6V3p5uKZ_rBL2Qwbc5cE2W6-N5BQKeZ2GIQtC3PI6GVipLuw0mXvNGbvYUcl3c6YxgSElasLJbsH7D9GnHvLRbn_4aGZ-MNmqo69-DP5fUlcELxduAnSiBKmC7XEcsO685QvjG3J7tpEDDue23beMlFGJqqXtuuuWbH2bMwnf7SrZXA']
 ];
 ?>
 <!DOCTYPE html>
@@ -137,11 +137,11 @@ $products = [
             <div class="relative overflow-hidden rounded-xl bg-primary-container/10 aspect-[16/9] md:aspect-[21/9] flex items-center">
                 <img alt="Special Bouquet" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHcu9O2__0chVKJTiV2nFzo6jQ1CDlCPwg5HBCD_qT9GfaZK93W5r1X53YVG_k1H2EB4t1Fu9A-ULgsZfWhY_yCeUWP1eBMtfme46DX7NHl0csysM5BpVj5msi_6x_4NK0a4tkCxo-D61GRcJPsfQP4yMUYl1NdRXNVU8Ji253A6MyhkyOdVlwXh1xeft6lohijXnj8DQQ72rkOKNBQMOUS7tCrKIXDchXfm4bEBLjjlqvmvRa_inIEfbXFHp07mv1vuCJTPhSIRc"/>
                 <div class="relative z-10 px-lg md:px-xl py-lg max-w-lg">
-                    <span class="font-label-md text-label-md text-on-primary-container bg-primary-fixed/50 px-3 py-1 rounded-full mb-4 inline-block">LIMITED EDITION</span>
-                    <h2 class="font-display-lg text-display-lg text-on-primary-container mb-4">The Morning Muse</h2>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Experience the freshness of hand-picked seasonal blooms delivered to your door.</p>
+                    <span class="font-label-md text-label-md text-on-primary-container bg-primary-fixed/50 px-3 py-1 rounded-full mb-4 inline-block">EDISI TERBATAS</span>
+                    <h2 class="font-display-lg text-display-lg text-on-primary-container mb-4">Inspirasi Pagi</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Rasakan kesegaran bunga musim ini yang dipetik langsung dan diantar ke pintu Anda.</p>
                     <button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-md rounded-full shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
-                        Shop Special Bouquet
+                        Beli Buket Spesial
                     </button>
                 </div>
             </div>
@@ -183,18 +183,18 @@ $products = [
                             </button>
                         </div>
                         <h4 class="font-headline-md text-[18px] text-on-surface mb-1"><?php echo htmlspecialchars($product['name']); ?></h4>
-                        <p class="font-body-lg text-tertiary">$<?php echo number_format($product['price'], 2); ?></p>
+                        <p class="font-body-lg text-tertiary">Rp. <?php echo number_format($product['price'], 0, ',', '.'); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
 
         <section class="mt-xxl mx-md py-xl bg-white rounded-3xl shadow-[0px_4px_20px_rgba(244,114,182,0.04)] text-center border border-pink-50">
-            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Join our Floral Circle</h3>
-            <p class="font-body-md text-secondary mb-8 max-w-md mx-auto">Subscribe for exclusive offers, floral care tips, and the first pick of our seasonal collections.</p>
+            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Bergabung dengan Komunitas Kami</h3>
+            <p class="font-body-md text-secondary mb-8 max-w-md mx-auto">Berlangganan untuk penawaran eksklusif, tips perawatan bunga, dan akses lebih awal untuk koleksi musiman kami.</p>
             <form action="" method="POST" class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
-                <input class="w-full md:flex-1 rounded-full border border-pink-100 bg-white px-6 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Your email address" type="email" name="email" required/>
-                <button type="submit" class="w-full md:w-auto bg-primary text-on-primary px-xl py-3 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">Subscribe</button>
+                <input class="w-full md:flex-1 rounded-full border border-pink-100 bg-white px-6 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Alamat email Anda" type="email" name="email" required/>
+                <button type="submit" class="w-full md:w-auto bg-primary text-on-primary px-xl py-3 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">Berlangganan</button>
             </form>
         </section>
     </main>
