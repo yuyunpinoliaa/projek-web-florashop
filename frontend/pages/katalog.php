@@ -122,8 +122,8 @@ session_start();
 <main class="max-w-[1200px] mx-auto px-md md:px-lg mt-sm md:mt-md">
 <!-- Hero Section/Page Header -->
 <div class="py-sm md:py-md">
-    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Curated Collections</h2>
-    <p class="font-body-md text-body-md text-secondary mt-xs max-w-lg">Find the perfect bloom for every occasion, hand-picked for freshness and elegance.</p>
+    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Koleksi Pilihan</h2>
+    <p class="font-body-md text-body-md text-secondary mt-xs max-w-lg">Temukan bunga sempurna untuk setiap kesempatan, dipilih langsung untuk kesegaran dan keindahan.</p>
 </div>
 <!-- Filter & Sort Bar -->
 <div class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md py-4 -mx-md px-md overflow-x-auto no-scrollbar flex items-center gap-sm md:gap-md">
@@ -162,10 +162,10 @@ session_start();
             </div>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Blushing Peonies</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Elegant arrangement for special moments</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Peony Merah Muda</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Rangkaian elegan untuk momen spesial</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$45.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 45.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -181,10 +181,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Crimson Romance</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Classic long-stemmed red roses</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Romansa Merah Tua</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Mawar merah klasik bertangkai panjang</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$59.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 59.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -200,10 +200,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Starlight Lily</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Pure white lilies for a serene home</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Lily Cahaya Bintang</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Lily putih murni untuk rumah yang tenang</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$38.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 38.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -219,10 +219,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Golden Sun</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Bring the warmth of the sun indoors</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Matahari Keemasan</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Bawa kehangatan matahari ke dalam ruangan</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$32.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 32.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -238,10 +238,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Zen Orchid</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">A minimalist masterpiece for any desk</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Anggrek Zen</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Karya minimalis untuk meja kerja Anda</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$52.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 52.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -260,10 +260,10 @@ session_start();
             </div>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Wild Meadow</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Rustic charm and untamed beauty</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Padang Rumput Liar</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Pesona alami dan keindahan liar</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$42.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 42.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -279,10 +279,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Spring Whisper</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Soft pastel tulips for a gentle touch</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Bisikan Musim Semi</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Tulip pastel lembut untuk sentuhan manis</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$34.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 34.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
@@ -298,10 +298,10 @@ session_start();
             </button>
         </div>
         <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Midnight Velvet</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Deep purple hues for a luxury feel</p>
+            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Beludru Tengah Malam</h3>
+            <p class="font-body-md text-label-sm text-secondary truncate">Warna ungu pekat untuk kesan mewah</p>
             <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">$68.00</span>
+                <span class="font-body-lg text-tertiary font-semibold">Rp. 68.000</span>
                 <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
