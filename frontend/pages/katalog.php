@@ -318,7 +318,7 @@ session_start();
 </main>
 <!-- Bottom Navigation Bar -->
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(244,114,182,0.08)] rounded-t-xl">
-    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="../../index.php">
+    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="home.php">
         <span class="material-symbols-outlined">home</span>
         <span class="font-label-md text-label-md mt-1">Home</span>
     </a>
@@ -326,11 +326,11 @@ session_start();
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_florist</span>
         <span class="font-label-md text-label-md mt-1">Catalog</span>
     </a>
-    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="#">
+    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="keranjang.php">
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="font-label-md text-label-md mt-1">Cart</span>
     </a>
-    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="#">
+    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="login.php">
         <span class="material-symbols-outlined">person</span>
         <span class="font-label-md text-label-md mt-1">Profile</span>
     </a>
