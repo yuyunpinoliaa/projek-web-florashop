@@ -20,8 +20,21 @@ $products = [
 ];
 ?>
 
+<style>
+    /* Mencari button melayang yang berisi ikon 'add' (plus) dan menyembunyikannya */
+    button.fixed.bottom-24, 
+    button.fixed:has(span:contains('add')),
+    .fixed.bottom-0 ~ button { 
+        display: none !important; 
+    }
+    
+    /* Cara paling aman jika tombol tersebut menggunakan class utilitas atau selektor umum */
+    main + button, nav + button, button:has(span[data-icon="add"]) {
+        display: none !important;
+    }
+</style>
+
 <main class="max-w-container-max mx-auto pb-xxl animate-fade-in">
-    <!-- Hero Section: Special Bouquet Promo -->
     <section class="px-md mt-md">
         <div class="relative overflow-hidden rounded-xl bg-primary-container/10 aspect-[16/9] md:aspect-[21/9] flex items-center">
             <img alt="Special Bouquet" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHcu9O2__0chVKJTiV2nFzo6jQ1CDlCPwg5HBCD_qT9GfaZK93W5r1X53YVG_k1H2EB4t1Fu9A-ULgsZfWhY_yCeUWP1eBMtfme46DX7NHl0csysM5BpVj5msi_6x_4NK0a4tkCxo-D61GRcJPsfQP4yMUYl1NdRXNVU8Ji253A6MyhkyOdVlwXh1xeft6lohijXnj8DQQ72rkOKNBQMOUS7tCrKIXDchXfm4bEBLjjlqvmvRa_inIEfbXFHp07mv1vuCJTPhSIRc"/>
@@ -36,7 +49,6 @@ $products = [
         </div>
     </section>
 
-    <!-- Categories Section -->
     <section class="mt-xl px-md">
         <div class="flex justify-between items-center mb-lg">
             <h3 class="font-headline-md text-headline-md text-on-surface">Categories</h3>
@@ -54,7 +66,6 @@ $products = [
         </div>
     </section>
 
-    <!-- Featured Products -->
     <section class="mt-xl px-md">
         <div class="flex justify-between items-center mb-lg">
             <h3 class="font-headline-md text-headline-md text-on-surface">Featured Products</h3>
@@ -63,7 +74,6 @@ $products = [
                 <button class="material-symbols-outlined p-2 border border-outline-variant/30 rounded-full text-secondary hover:bg-primary/5" data-icon="chevron_right">chevron_right</button>
             </div>
         </div>
-        <!-- Bento-style Grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg">
             <?php foreach ($products as $product): ?>
                 <div class="bg-surface group cursor-pointer relative" onclick="window.location.href='detail_produk.php'">
@@ -80,7 +90,6 @@ $products = [
         </div>
     </section>
 
-    <!-- Newsletter Subscription -->
     <section class="mt-xxl mx-md py-xl bg-white rounded-3xl shadow-[0px_4px_20px_rgba(244,114,182,0.04)] text-center border border-pink-50">
         <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Bergabung dengan Komunitas Kami</h3>
         <p class="font-body-md text-secondary mb-8 max-w-md mx-auto">Berlangganan untuk penawaran eksklusif, tips perawatan bunga, dan akses lebih awal untuk koleksi musiman kami.</p>
