@@ -152,7 +152,8 @@ session_start();
             <p class="font-body-md text-label-sm text-secondary truncate">Rangkaian elegan untuk momen spesial</p>
             <div class="mt-2 flex items-center justify-between">
                 <span class="font-body-lg text-tertiary font-semibold">Rp. 45.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+                <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+                        data-name="Peony Merah Muda" data-price="45000" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
             </div>
@@ -170,7 +171,8 @@ session_start();
             <p class="font-body-md text-label-sm text-secondary truncate">Mawar merah klasik bertangkai panjang</p>
             <div class="mt-2 flex items-center justify-between">
                 <span class="font-body-lg text-tertiary font-semibold">Rp. 59.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+                <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+                        data-name="Romansa Merah Tua" data-price="59000" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
             </div>
@@ -188,7 +190,8 @@ session_start();
             <p class="font-body-md text-label-sm text-secondary truncate">Lily putih murni untuk rumah yang tenang</p>
             <div class="mt-2 flex items-center justify-between">
                 <span class="font-body-lg text-tertiary font-semibold">Rp. 38.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+                <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+                        data-name="Lily Cahaya Bintang" data-price="38000" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCAj0XJtAkTco3Vz-bCkJiwtdQkv2u-TNR1emY7hCKTDsdik3dx8DCjhcZkF5J6k7VatG2yr9GuYPxpFB1nn4HMhicyOk3DRKPv3o7K9W9JQhoiItyMK6KuCivIXdV6JJ1Vg_uslqAo4cxpSRjgOZvoQTAeKPlRTFU9muCyu9y2fEhmtSAHPuV68er9Z4D8YJZaYQ7XAqnur-nTuEDZNG2ffLPodQ4SO9VI-arceovVZzYaQt7A5n_nOeglm_Q0S29kUqcXrWQgkgc">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
             </div>
@@ -206,17 +209,13 @@ session_start();
             <p class="font-body-md text-label-sm text-secondary truncate">Bawa kehangatan matahari ke dalam ruangan</p>
             <div class="mt-2 flex items-center justify-between">
                 <span class="font-body-lg text-tertiary font-semibold">Rp. 32.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
+                <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+                        data-name="Matahari Keemasan" data-price="32000" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuC5NnuNUAoGLVTQmVc3h-aK-lR05EllNdOAcWorexgwMRnjtZfLrSD8VUCA807bhBii_NyrJ4Sh7WgXFWW9vUtTkZQOiY2rBk4PlnrVM9GbSq1eHEZBnsMHNUOMhUoEEr1Dwrb_tpUahodD4uasyUPlWku6gtNtrm8AqS8BzuhpD8NTx67vzITqqsXKQNGDXgtVNtPHucKq2OwkqehLsPNdTRGnMKGA1zOBTmyENGB2hAt4PDhX3BDNcUtx6Cb-TyYi3cWKF6x9uHM">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
             </div>
         </div>
     </div>
-</div>
-<div class="flex justify-center py-xxl">
-    <button class="px-8 py-3 border border-primary text-primary rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all active:scale-95">
-        Load More Blooms
-    </button>
 </div>
 </main>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(244,114,182,0.08)] rounded-t-xl">
@@ -249,6 +248,40 @@ session_start();
                 }
             })
             .catch(error => console.error('Error fetching products:', error));
+
+        // Logika untuk Tombol Tambah Keranjang (+)
+        const addButtons = document.querySelectorAll('.btn-add-to-cart');
+        addButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const productData = {
+                    name: button.getAttribute('data-name'),
+                    price: parseInt(button.getAttribute('data-price')),
+                    img: button.getAttribute('data-img')
+                };
+
+                fetch('../../backend/keranjang/tambah_keranjang.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(productData)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
+                        alert(result.message);
+                    } else {
+                        alert('Gagal menambahkan produk: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan jaringan.');
+                });
+            });
+        });
     });
 
     // Micro-interactions for product buttons
