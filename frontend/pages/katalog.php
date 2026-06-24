@@ -7,7 +7,6 @@ session_start();
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Florashop - Catalog</title>
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -109,7 +108,6 @@ session_start();
     </script>
 </head>
 <body class="min-h-screen pb-32">
-<!-- Top App Bar -->
 <header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center w-full px-md py-sm transition-colors">
     <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-primary text-[24px]">search</span>
@@ -120,24 +118,15 @@ session_start();
     </div>
 </header>
 <main class="max-w-[1200px] mx-auto px-md md:px-lg mt-sm md:mt-md">
-<!-- Hero Section/Page Header -->
 <div class="py-sm md:py-md">
     <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Koleksi Pilihan</h2>
     <p class="font-body-md text-body-md text-secondary mt-xs max-w-lg">Temukan bunga sempurna untuk setiap kesempatan, dipilih langsung untuk kesegaran dan keindahan.</p>
 </div>
-<!-- Filter & Sort Bar -->
 <div class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md py-4 -mx-md px-md overflow-x-auto no-scrollbar flex items-center gap-sm md:gap-md">
     <button class="flex items-center gap-1 bg-primary text-on-primary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap">
         <span class="material-symbols-outlined text-[18px]">filter_list</span>
         Filters
     </button>
-    <div class="h-6 w-[1px] bg-outline-variant/30 hidden md:block"></div>
-    <div class="flex items-center gap-2">
-        <button class="bg-secondary-container/30 text-secondary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/20 hover:text-primary transition-all">All Flowers</button>
-        <button class="bg-secondary-container/30 text-secondary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/20 hover:text-primary transition-all">Seasonal</button>
-        <button class="bg-secondary-container/30 text-secondary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/20 hover:text-primary transition-all">Weddings</button>
-        <button class="bg-secondary-container/30 text-secondary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap hover:bg-primary-container/20 hover:text-primary transition-all">House Plants</button>
-    </div>
     <div class="ml-auto hidden md:flex items-center gap-2 border border-outline-variant/50 rounded-full px-4 py-2">
         <span class="font-label-md text-label-md text-secondary">Sort by:</span>
         <select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-primary cursor-pointer p-0">
@@ -147,10 +136,7 @@ session_start();
         </select>
     </div>
 </div>
-<!-- Product Grid -->
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mt-lg" id="product-grid">
-    <!-- Products will be loaded dynamically or kept static as provided -->
-    <!-- Product 1 -->
     <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
         <div class="relative aspect-square overflow-hidden bg-surface-container-low">
             <img class="product-image w-full h-full object-cover" data-alt="Blushing Peonies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM"/>
@@ -172,7 +158,6 @@ session_start();
             </div>
         </div>
     </div>
-    <!-- Product 2 -->
     <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
         <div class="relative aspect-square overflow-hidden bg-surface-container-low">
             <img class="product-image w-full h-full object-cover" data-alt="Crimson Romance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo"/>
@@ -191,7 +176,6 @@ session_start();
             </div>
         </div>
     </div>
-    <!-- Product 3 -->
     <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
         <div class="relative aspect-square overflow-hidden bg-surface-container-low">
             <img class="product-image w-full h-full object-cover" data-alt="Starlight Lily" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAj0XJtAkTco3Vz-bCkJiwtdQkv2u-TNR1emY7hCKTDsdik3dx8DCjhcZkF5J6k7VatG2yr9GuYPxpFB1nn4HMhicyOk3DRKPv3o7K9W9JQhoiItyMK6KuCivIXdV6JJ1Vg_uslqAo4cxpSRjgOZvoQTAeKPlRTFU9muCyu9y2fEhmtSAHPuV68er9Z4D8YJZaYQ7XAqnur-nTuEDZNG2ffLPodQ4SO9VI-arceovVZzYaQt7A5n_nOeglm_Q0S29kUqcXrWQgkgc"/>
@@ -210,7 +194,6 @@ session_start();
             </div>
         </div>
     </div>
-    <!-- Product 4 -->
     <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
         <div class="relative aspect-square overflow-hidden bg-surface-container-low">
             <img class="product-image w-full h-full object-cover" data-alt="Golden Sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5NnuNUAoGLVTQmVc3h-aK-lR05EllNdOAcWorexgwMRnjtZfLrSD8VUCA807bhBii_NyrJ4Sh7WgXFWW9vUtTkZQOiY2rBk4PlnrVM9GbSq1eHEZBnsMHNUOMhUoEEr1Dwrb_tpUahodD4uasyUPlWku6gtNtrm8AqS8BzuhpD8NTx67vzITqqsXKQNGDXgtVNtPHucKq2OwkqehLsPNdTRGnMKGA1zOBTmyENGB2hAt4PDhX3BDNcUtx6Cb-TyYi3cWKF6x9uHM"/>
@@ -229,94 +212,13 @@ session_start();
             </div>
         </div>
     </div>
-    <!-- Product 5 -->
-    <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
-        <div class="relative aspect-square overflow-hidden bg-surface-container-low">
-            <img class="product-image w-full h-full object-cover" data-alt="Zen Orchid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyM0LJrHdXD1xhsjIhk95N05w9t3adz8jFYRplmnCbyKW6X6phr01U5arPa_V_A-CLj0Nf38W_FJYwc91xtpfzX_jmVvaXFVymkiYgf3ensxf0KJ5XCO2Kd7F7Rhzipp6ChFeJ3Dt9l1fsewE5l66vB88Mhqj5C7rQ5ZBdgQTT9HyV64du8Y849IYiKZCCFKAPP2exQuSCqHwbbFnhjSOA0YMpRHEWr4cbfGZy7VogKbWHlHh6TBnbOqtYvXuzQu7WoSeXohjMTKQ"/>
-            <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[20px]">favorite</span>
-            </button>
-        </div>
-        <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Anggrek Zen</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Karya minimalis untuk meja kerja Anda</p>
-            <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">Rp. 52.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Product 6 -->
-    <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
-        <div class="relative aspect-square overflow-hidden bg-surface-container-low">
-            <img class="product-image w-full h-full object-cover" data-alt="Wild Meadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTOTQK0qUlxJogYOHu_crSwfBQ_j7LP-CiTs26N81y3T_ZJtRQpUNalI4Ghcc3rIswmEDVeuWRHyaSOyQQcc31wfiTBmI3RiK8C-rdG3cH_mwKID4IYU_jkG5poRcAh5D0uLIQ7QPXPo-0TRMlO52eeoJbxTAcRe6P9osxqQlykTjPMZW7zwNXsRlbbDYNyYK_xIy9fjAH5YNnctEfL-AEFGsgTppWIvL7M3Nd-UTpMnJWvv0UosCRKYqJQrKOr5AP6O-0ArroOV8"/>
-            <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[20px]">favorite</span>
-            </button>
-            <div class="absolute bottom-3 left-3">
-                <span class="bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm backdrop-blur-sm">Sustainable</span>
-            </div>
-        </div>
-        <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Padang Rumput Liar</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Pesona alami dan keindahan liar</p>
-            <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">Rp. 42.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Product 7 -->
-    <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
-        <div class="relative aspect-square overflow-hidden bg-surface-container-low">
-            <img class="product-image w-full h-full object-cover" data-alt="Spring Whisper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwSQvb6GE4xX9iuJHE7BMcVJMHJS7A1OqgqNjXBvD581t_DbFMiOo8Xirdg-jM6gtO_Km1bAa6DQJsPbdoCtT7rtYnrWIfK7_GlZuXlFEWV6pHdl_aZ2u9_mpVN6ngEkPDdSSMcWvbTQ1WDC36BkwxbuEP7C-tOZwSET7KGIh2HCYqf8Xz0GKkQ6fuP7FjOuE5948ablEU3ke2EnieEcmmC75c85HDfOGbJlDOPnMO2our05Xqa5_XKKZgEYDE05_jaHr1ivkKZOE"/>
-            <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[20px]">favorite</span>
-            </button>
-        </div>
-        <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Bisikan Musim Semi</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Tulip pastel lembut untuk sentuhan manis</p>
-            <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">Rp. 34.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- Product 8 -->
-    <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
-        <div class="relative aspect-square overflow-hidden bg-surface-container-low">
-            <img class="product-image w-full h-full object-cover" data-alt="Midnight Velvet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXZBaQJ8sKCdZh9MebUTdCq-P4Fh3uv4JwdEKK0kG8PjMgb4MpMmAmIbsbFc4QCU4l4ateQMXAZevtmcw4A0pu777E4eDJG_Iiq9oJOdlzbe6JiZBvjtWomDju5gszmcMCanla9ND3cs-xmek5B6ENJq7JNNHyYZwYl_QO2Ue9jM2R-7ZWPQ8x_IrGKQtSLOl7r7IFQ-tckyu08lFnBff06H4ZaGhvuD_7P3Je6_0lhf2TBl7Ay3dcQeWvMcOOGQeyItUQUN_9WZw"/>
-            <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[20px]">favorite</span>
-            </button>
-        </div>
-        <div class="p-4 flex flex-col gap-1">
-            <h3 class="font-headline-md text-label-md md:text-headline-md text-on-surface group-hover:text-primary transition-colors">Beludru Tengah Malam</h3>
-            <p class="font-body-md text-label-sm text-secondary truncate">Warna ungu pekat untuk kesan mewah</p>
-            <div class="mt-2 flex items-center justify-between">
-                <span class="font-body-lg text-tertiary font-semibold">Rp. 68.000</span>
-                <button class="h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- Pagination/Load More -->
 <div class="flex justify-center py-xxl">
     <button class="px-8 py-3 border border-primary text-primary rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all active:scale-95">
         Load More Blooms
     </button>
 </div>
 </main>
-<!-- Bottom Navigation Bar -->
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(244,114,182,0.08)] rounded-t-xl">
     <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="home.php">
         <span class="material-symbols-outlined">home</span>
@@ -344,7 +246,6 @@ session_start();
             .then(result => {
                 if(result.status === 'success' && result.data.length > 0) {
                     // Could replace the static product grid here
-                    // console.log("Products from DB:", result.data);
                 }
             })
             .catch(error => console.error('Error fetching products:', error));
