@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+body {
+    background-color: #f8f9ff;
+=======
 /* assets/css/home.css */
 body { 
     background-color: #f8f9ff; 
+>>>>>>> 8885c56dd68b483b6724449d6273e7e3787a101e
     min-height: max(884px, 100dvh);
 }
 
@@ -12,7 +17,10 @@ body {
     background-color: rgba(244, 114, 182, 0.2);
 }
 
+<<<<<<< HEAD
+=======
 /* Custom Scrollbar */
+>>>>>>> 8885c56dd68b483b6724449d6273e7e3787a101e
 .custom-scrollbar::-webkit-scrollbar {
     height: 4px;
 }
@@ -24,4 +32,8 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #dac0c9;
     border-radius: 10px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8885c56dd68b483b6724449d6273e7e3787a101e

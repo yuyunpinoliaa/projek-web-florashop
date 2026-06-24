@@ -204,5 +204,3 @@ if (isset($_SESSION['user_id'])) {
             </p>
         </div>
     </main>
-</body>
-</html>
