@@ -1,93 +1,51 @@
 <?php
 session_start();
 
-// 1. Ambil kategori yang diklik dari URL (jika tidak ada, default kosong artinya menampilkan semua)
-$selected_category = isset($_GET['category']) ? $_GET['category'] : '';
-
-// 2. Data Master Produk lengkap dengan Kategori Baru (Nama Indonesia & Harga Rupiah)
+// Data Master Produk (Nama Indonesia & Harga Rupiah)
 $all_products = [
-    // Kategori: buket bunga satin
-    [
-        'name' => 'Buket Satin Rose Elegant',
-        'price' => 65000,
-        'category' => 'buket bunga satin',
-        'desc' => 'Buket bunga mawar dari kain satin kerajinan tangan awet selamanya',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM',
-        'tag' => 'Best Seller'
-    ],
-    [
-        'name' => 'Buket Satin Lavender Soft',
-        'price' => 55000,
-        'category' => 'buket bunga satin',
-        'desc' => 'Rangkaian bunga satin warna ungu lavender cantik nan estetik',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwSQvb6GE4xX9iuJHE7BMcVJMHJS7A1OqgqNjXBvD581t_DbFMiOo8Xirdg-jM6gtO_Km1bAa6DQJsPbdoCtT7rtYnrWIfK7_GlZuXlFEWV6pHdl_aZ2u9_mpVN6ngEkPDdSSMcWvbTQ1WDC36BkwxbuEP7C-tOZwSET7KGIh2HCYqf8Xz0GKkQ6fuP7FjOuE5948ablEU3ke2EnieEcmmC75c85HDfOGbJlDOPnMO2our05Xqa5_XKKZgEYDE05_jaHr1ivkKZOE',
-        'tag' => ''
-    ],
-
-    // Kategori: buket uang
-    [
-        'name' => 'Buket Uang Money Bloom',
-        'price' => 150000, // Harga jasa pembuatan di luar nominal uang
-        'category' => 'buket uang',
-        'desc' => 'Buket uang kertas kosong/asli rangkai rapi untuk kado wisuda mewah',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo',
-        'tag' => 'Populer'
-    ],
-
-    // Kategori: buket custom
-    [
-        'name' => 'Buket Custom Request',
-        'price' => 120000,
-        'category' => 'buket custom',
-        'desc' => 'Sesuaikan warna kertas wrap, jenis bunga, dan kartu ucapan sesukamu',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCAj0XJtAkTco3Vz-bCkJiwtdQkv2u-TNR1emY7hCKTDsdik3dx8DCjhcZkF5J6k7VatG2yr9GuYPxpFB1nn4HMhicyOk3DRKPv3o7K9W9JQhoiItyMK6KuCivIXdV6JJ1Vg_uslqAo4cxpSRjgOZvoQTAeKPlRTFU9muCyu9y2fEhmtSAHPuV68er9Z4D8YJZaYQ7XAqnur-nTuEDZNG2ffLPodQ4SO9VI-arceovVZzYaQt7A5n_nOeglm_Q0S29kUqcXrWQgkgc',
-        'tag' => 'Custom'
-    ],
-
-    // Kategori: buket bunga palsu
-    [
-        'name' => 'Buket Artificial Daisy Lily',
-        'price' => 75000,
-        'category' => 'buket bunga palsu',
-        'desc' => 'Buket kombinasi bunga palsu tiruan berbahan plastik & kain premium kualitas tinggi',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM',
-        'tag' => ''
-    ],
-    [
-        'name' => 'Buket Mawar Plastik Rustic',
-        'price' => 45000,
-        'category' => 'buket bunga palsu',
-        'desc' => 'Bunga mawar imitasi dengan gaya anyaman kertas bungkus tema rustic',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyM0LJrHdXD1xhsjIhk95N05w9t3adz8jFYRplmnCbyKW6X6phr01U5arPa_V_A-CLj0Nf38W_FJYwc91xtpfzX_jmVvaXFVymkiYgf3ensxf0KJ5XCO2Kd7F7Rhzipp6ChFeJ3Dt9l1fsewE5l66vB88Mhqj5C7rQ5ZBdgQTT9HyV64du8Y849IYiKZCCFKAPP2exQuSCqHwbbFnhjSOA0YMpRHEWr4cbfGZy7VogKbWHlHh6TBnbOqtYvXuzQu7WoSeXohjMTKQ',
-        'tag' => ''
-    ],
-
-    // Kategori: buket fresh flower
     [
         'name' => 'Buket Mawar Merah Segar',
         'price' => 185000,
-        'category' => 'buket fresh flower',
         'desc' => 'Rangkaian mawar merah asli yang fresh dan wangi, dipetik langsung',
         'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5NnuNUAoGLVTQmVc3h-aK-lR05EllNdOAcWorexgwMRnjtZfLrSD8VUCA807bhBii_NyrJ4Sh7WgXFWW9vUtTkZQOiY2rBk4PlnrVM9GbSq1eHEZBnsMHNUOMhUoEEr1Dwrb_tpUahodD4uasyUPlWku6gtNtrm8AqS8BzuhpD8NTx67vzITqqsXKQNGDXgtVNtPHucKq2OwkqehLsPNdTRGnMKGA1zOBTmyENGB2hAt4PDhX3BDNcUtx6Cb-TyYi3cWKF6x9uHM',
         'tag' => 'Premium'
     ],
     [
+        'name' => 'Buket Satin Rose Elegant',
+        'price' => 65000,
+        'desc' => 'Buket bunga mawar dari kain satin kerajinan tangan awet selamanya',
+        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM',
+        'tag' => 'Best Seller'
+    ],
+    [
         'name' => 'Buket Fresh Sunflower',
         'price' => 135000,
-        'category' => 'buket fresh flower',
-        'desc' => 'Bunga matahari asli berukuran besar dikombinasikan dengan baby breath segar',
+        'desc' => 'Bunga matahari asli berukuran besar dikombinasikan dengan baby breath',
         'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTOTQK0qUlxJogYOHu_crSwfBQ_j7LP-CiTs26N81y3T_ZJtRQpUNalI4Ghcc3rIswmEDVeuWRHyaSOyQQcc31wfiTBmI3RiK8C-rdG3cH_mwKID4IYU_jkG5poRcAh5D0uLIQ7QPXPo-0TRMlO52eeoJbxTAcRe6P9osxqQlykTjPMZW7zwNXsRlbbDYNyYK_xIy9fjAH5YNnctEfL-AEFGsgTppWIvL7M3Nd-UTpMnJWvv0UosCRKYqJQrKOr5AP6O-0ArroOV8',
+        'tag' => ''
+    ],
+    [
+        'name' => 'Buket Uang Money Bloom',
+        'price' => 150000,
+        'desc' => 'Buket uang kertas kosong/asli rangkai rapi untuk kado wisuda mewah',
+        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo',
+        'tag' => 'Populer'
+    ],
+    [
+        'name' => 'Buket Artificial Daisy Lily',
+        'price' => 75000,
+        'desc' => 'Buket kombinasi bunga palsu tiruan berbahan plastik & kain premium',
+        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM',
+        'tag' => ''
+    ],
+    [
+        'name' => 'Buket Satin Lavender Soft',
+        'price' => 55000,
+        'desc' => 'Rangkaian bunga satin warna ungu lavender cantik nan estetik',
+        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwSQvb6GE4xX9iuJHE7BMcVJMHJS7A1OqgqNjXBvD581t_DbFMiOo8Xirdg-jM6gtO_Km1bAa6DQJsPbdoCtT7rtYnrWIfK7_GlZuXlFEWV6pHdl_aZ2u9_mpVN6ngEkPDdSSMcWvbTQ1WDC36BkwxbuEP7C-tOZwSET7KGIh2HCYqf8Xz0GKkQ6fuP7FjOuE5948ablEU3ke2EnieEcmmC75c85HDfOGbJlDOPnMO2our05Xqa5_XKKZgEYDE05_jaHr1ivkKZOE',
         'tag' => ''
     ]
 ];
-
-// 3. Logika Penyaringan: Memisahkan produk berdasarkan kategori yang ditangkap dari URL GET
-$filtered_products = [];
-foreach ($all_products as $product) {
-    if (empty($selected_category) || strtolower($product['category']) === strtolower($selected_category)) {
-        $filtered_products[] = $product;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
@@ -112,8 +70,6 @@ foreach ($all_products as $product) {
                         "primary-container": "#f472b6",
                         "on-primary-container": "#6d0047",
                         "tertiary": "#006d30",
-                        "tertiary-container": "#51b269",
-                        "on-tertiary-container": "#004019",
                         "surface": "#f8f9ff",
                         "on-surface": "#121c2a",
                         "secondary": "#635c61",
@@ -147,17 +103,11 @@ foreach ($all_products as $product) {
 
 <main class="max-w-[1200px] mx-auto px-md md:px-lg mt-sm md:mt-md">
 <div class="py-sm md:py-md">
-    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface capitalize">
-        Koleksi Pilihan <?php echo !empty($selected_category) ? " - " . htmlspecialchars($selected_category) : ""; ?>
-    </h2>
+    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Koleksi Pilihan</h2>
     <p class="font-body-md text-body-md text-secondary mt-xs max-w-lg">Temukan bunga sempurna untuk setiap kesempatan, dipilih langsung untuk kesegaran dan keindahan.</p>
 </div>
 
-<div class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md py-4 -mx-md px-md overflow-x-auto no-scrollbar flex items-center justify-between gap-sm">
-    <a href="katalog.php" class="flex items-center gap-1 bg-primary text-on-primary rounded-full px-4 py-2 font-label-md text-label-md whitespace-nowrap">
-        <span class="material-symbols-outlined text-[18px]">clear_all</span>
-        Tampilkan Semua
-    </a>
+<div class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md py-4 -mx-md px-md overflow-x-auto no-scrollbar flex items-center justify-end">
     <div class="flex items-center gap-2 border border-outline-variant/50 rounded-full px-4 py-2 bg-white">
         <span class="font-label-md text-label-md text-secondary">Sort by:</span>
         <select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-primary cursor-pointer p-0">
@@ -168,40 +118,34 @@ foreach ($all_products as $product) {
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mt-lg" id="product-grid">
-    <?php if (empty($filtered_products)): ?>
-        <div class="col-span-full text-center py-12">
-            <p class="text-secondary font-medium">Maaf, produk buket untuk kategori ini belum tersedia.</p>
-        </div>
-    <?php else: ?>
-        <?php foreach ($filtered_products as $product): ?>
-            <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
-                <div class="relative aspect-square overflow-hidden bg-gray-50">
-                    <img class="product-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo $product['img']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>"/>
-                    <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined text-[20px]">favorite</span>
-                    </button>
-                    <?php if (!empty($product['tag'])): ?>
-                        <div class="absolute bottom-3 left-3">
-                            <span class="bg-primary-container/90 text-on-primary-container px-3 py-1 rounded-full font-label-sm text-[12px] backdrop-blur-sm"><?php echo $product['tag']; ?></span>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="p-4 flex flex-col gap-1">
-                    <h3 class="font-headline-md text-base text-on-surface group-hover:text-primary transition-colors truncate"><?php echo htmlspecialchars($product['name']); ?></h3>
-                    <p class="font-body-md text-xs text-secondary truncate"><?php echo htmlspecialchars($product['desc']); ?></p>
-                    <div class="mt-2 flex items-center justify-between">
-                        <span class="font-body-lg text-tertiary font-semibold">Rp <?php echo number_format($product['price'], 0, ',', '.'); ?></span>
-                        <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
-                                data-name="<?php echo htmlspecialchars($product['name']); ?>" 
-                                data-price="<?php echo $product['price']; ?>" 
-                                data-img="<?php echo $product['img']; ?>">
-                            <span class="material-symbols-outlined text-[18px]">add</span>
-                        </button>
+    <?php foreach ($all_products as $product): ?>
+        <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
+            <div class="relative aspect-square overflow-hidden bg-gray-50">
+                <img class="product-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo $product['img']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>"/>
+                <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">favorite</span>
+                </button>
+                <?php if (!empty($product['tag'])): ?>
+                    <div class="absolute bottom-3 left-3">
+                        <span class="bg-primary-container/90 text-on-primary-container px-3 py-1 rounded-full font-label-sm text-[12px] backdrop-blur-sm"><?php echo $product['tag']; ?></span>
                     </div>
+                <?php endif; ?>
+            </div>
+            <div class="p-4 flex flex-col gap-1">
+                <h3 class="font-headline-md text-base text-on-surface group-hover:text-primary transition-colors truncate"><?php echo htmlspecialchars($product['name']); ?></h3>
+                <p class="font-body-md text-xs text-secondary truncate"><?php echo htmlspecialchars($product['desc']); ?></p>
+                <div class="mt-2 flex items-center justify-between">
+                    <span class="font-body-lg text-tertiary font-semibold">Rp <?php echo number_format($product['price'], 0, ',', '.'); ?></span>
+                    <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+                            data-name="<?php echo htmlspecialchars($product['name']); ?>" 
+                            data-price="<?php echo $product['price']; ?>" 
+                            data-img="<?php echo $product['img']; ?>">
+                        <span class="material-symbols-outlined text-[18px]">add</span>
+                    </button>
                 </div>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
 </div>
 </main>
 
@@ -226,7 +170,7 @@ foreach ($all_products as $product) {
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Logika Ajax untuk tombol tambah (+) ke keranjang
+        // Logika Ajax untuk tombol tambah (+) ke keranjang tetap berfungsi sempurna
         const addButtons = document.querySelectorAll('.btn-add-to-cart');
         addButtons.forEach(button => {
             button.addEventListener('click', (e) => {
