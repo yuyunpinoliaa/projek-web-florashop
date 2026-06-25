@@ -2,37 +2,14 @@
 session_start();
 include_once '../includes/navbar.php'; 
 
-// Data dummy Kategori
-$categories = [
-    ['name' => 'Buket Bunga Satin', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtFTmSEeldL8iMqM9-OjD3B2E5nOiHsvGXf2-z30HhKLgJI314jK0Lwyo5Mj0EEPuN0DCALO6DZ3IkfGXnDAkSPapRdQnWoo4AumJvDXNFTUVn_OfMXaqnasy4tj4YbwsBLk9-RgMRu2ZScnGtEgLHk7nLBCflrYUCfZmYpmkSNJ_BBRrMDzb5R7fMhA4ZpGdawzBZ5FcFzTSQHHotmWbBsqitcV0qPxp6L3k0C5NNvckpau7pWfLXB0xF4lgckVGQp2pBn294YRI'],
-    ['name' => 'Buket Uang ', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuD2ywBKNnDGFzGm_XzN9gzV6SFDCjBJB6czgd2_AimDyJm1BfJM5b6XHO2nGA1axRn7UZU0wgxh5NRqb50TWWfk79sCJIfVT62rtOXFfZUuD4fX8r7_u8clFBiYgBiRAnhFBOCt-A8sp7NtX5M5yjGM8YcZT2qGjgNYVvz-vOXOakQ05KBJuWmKyWykLkKq3ZgPaFPzl2VQXnJmj2vfhYYDIGsWKsFfSmjRyzdJiX-y3Ln6g_QoBstEFk1I6OM_G_zpmtxZaiEo9c4'],
-    ['name' => 'Buket Custom', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6cyLRJtNKBgAbjYtCoUuZp6Q0jhmQWy_8dZUZayxjBvJoyj74Wo0a_SOQZekRjiRiNnY5jxXaMPyuKZ9RPO8WOXcnTmzqrWdO1o8OCD_80QdbJSBw3704lTbRDxcZ9k_WsF2hQzU33hqhrdbjG7C-2yOt4rKuBx8Llwodq85_HNmJqKCQ-OKDDrVYHHCyUc1RPQnznO3G4YhevTVwYArBXhUWtnxnFAwkKgMHBpr4SxUBmrH52x01_PN5pjsB_vbhCt009CV51ug'],
-    ['name' => 'Buket Bunga Palsu', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtUhoikHRQ-9qp1KAdv5KKgN3TELln3jnfAj7PezNqBck7PUwjFJ98cFRwPz5FfXL0Px2Q0MeAcW4ts7zb3FJrfkQq7PPog9Qv5Rq6TVHA9hGGLbsFbM-1hW0WGsU2zk0jJZvkKwzVg78cjMqdl973uSm5sesBnVj1GOpv3U1v8Dx2GQ9mr2s-gKH6IB3lUzRXndEWp5YaEkeYy4ZTg3bvd8h7p_0h5v7ekfw6H0Ds5Kk8rv7X3OFLBR6-iXWd76LP6gPa80oxMr8'],
-    ['name' => 'Buket Fresh Flower', 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCokKk70D-V0lSBCnNySLIm78fP1LYgoAUu6m_2h2djSUrW8ZA1cVp0dJcH7VVoGLubaMZ3Xd9Sob9PpIbdaVZNIlkFaOqoJA_cAQ292oKOZl5nEO1_QyHdqAeV_a70ujxwkPRhnF6wEeYtzYSK-zBiqjTnoXY8GGbD_CCXRDFXsuVl_jBovB40_NgqL_qc8iNJRgZbVew3Xs6aJ8ahW_ZszIMHHfhZ_DC0fFdHsOOPt_MtOD-Upn591qPvpLahLpoTJFATVGJgAuo']
-];
-
-// Data dummy Produk Unggulan
+// Data dummy Produk Unggulan (Nama Indonesia & Harga Rupiah)
 $products = [
-    ['name' => 'Blushing Tulips', 'price' => 45000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuASqqs3rKVd7NKNOS6L0zBRjg3cIRBGpBw-fS0t4RIVi-OJ24CLVEOLOICuci_o-LSGsGuXBvFv3nWuJrHyOqCH-j0uvsK0dgyHLnXHcqdLHj_KG2OL8hW9SsKaruPqjs4Sak0Ow1QfwC8I_ylQBfNH4M8zQAKtzH2kiQEVW3QvXSebEm0Bl8vBkRwtWSxbVaIW3vIlaicASYGCgs_sHpMhZ-o8myWnLtIjbqDwjIEDGxyK5Mp5UG_dqSDePpfbGn0jfwwALhUFGtw'],
-    ['name' => 'Velvet Roses', 'price' => 89000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKJiP19N6C2z0e42aMEi482IuS5xWldVftZ8Ki4FRILYbtbgLvbK1zoOg-wiCxxjVDEK76Ij4NlOUgrpiXeak263S52TfPRxhpivpEdwJLPDsP8kJCt5xw9ckAcUMIkV1i2-mALc72h8qZcLZ9xWJAaZkGxe2Z67e5VUO6kLRJGFqJWfCJLI8EVVA8HHBv_zFHtWVwCYvlvjDDGZzNk7TGR7ze31Vf1g3XLN52g97kh-OxbuFCVYalaz1oVuh5eNG5UXZz-myUpHo'],
-    ['name' => 'Swiss Cheese Plant', 'price' => 32000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM'],
-    ['name' => 'Wild Meadow', 'price' => 55000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBk0u-8UvYmvq-HP2OjlLcMcZ7hNBQ50fHX6rGi6m_empd7chGdTTjeKevegRFp4xv6zVfKCNwHpxaC_qD2f_uzO-Vjtwj6V3p5uKZ_rBL2Qwbc5cE2W6-N5BQKeZ2GIQtC3PI6GVipLuw0mXvNGbvYUcl3c6YxgSElasLJbsH7D9GnHvLRbn_4aGZ-MNmqo69-DP5fUlcELxduAnSiBKmC7XEcsO685QvjG3J7tpEDDue23beMlFGJqqXtuuuWbH2bMwnf7SrZXA']
+    ['name' => 'Buket Mawar Merah Segar', 'price' => 185000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5NnuNUAoGLVTQmVc3h-aK-lR05EllNdOAcWorexgwMRnjtZfLrSD8VUCA807bhBii_NyrJ4Sh7WgXFWW9vUtTkZQOiY2rBk4PlnrVM9GbSq1eHEZBnsMHNUOMhUoEEr1Dwrb_tpUahodD4uasyUPlWku6gtNtrm8AqS8BzuhpD8NTx67vzITqqsXKQNGDXgtVNtPHucKq2OwkqehLsPNdTRGnMKGA1zOBTmyENGB2hAt4PDhX3BDNcUtx6Cb-TyYi3cWKF6x9uHM'],
+    ['name' => 'Buket Satin Rose Elegant', 'price' => 65000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM'],
+    ['name' => 'Buket Fresh Sunflower', 'price' => 135000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTOTQK0qUlxJogYOHu_crSwfBQ_j7LP-CiTs26N81y3T_ZJtRQpUNalI4Ghcc3rIswmEDVeuWRHyaSOyQQcc31wfiTBmI3RiK8C-rdG3cH_mwKID4IYU_jkG5poRcAh5D0uLIQ7QPXPo-0TRMlO52eeoJbxTAcRe6P9osxqQlykTjPMZW7zwNXsRlbbDYNyYK_xIy9fjAH5YNnctEfL-AEFGsgTppWIvL7M3Nd-UTpMnJWvv0UosCRKYqJQrKOr5AP6O-0ArroOV8'],
+    ['name' => 'Buket Uang Money Bloom', 'price' => 150000, 'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo']
 ];
 ?>
-
-<style>
-    /* Mencari button melayang yang berisi ikon 'add' (plus) dan menyembunyikannya */
-    button.fixed.bottom-24, 
-    button.fixed:has(span:contains('add')),
-    .fixed.bottom-0 ~ button { 
-        display: none !important; 
-    }
-    
-    /* Cara paling aman jika tombol tersebut menggunakan class utilitas atau selektor umum */
-    main + button, nav + button, button:has(span[data-icon="add"]) {
-        display: none !important;
-    }
-</style>
 
 <main class="max-w-container-max mx-auto pb-xxl animate-fade-in">
     <section class="px-md mt-md">
@@ -46,23 +23,6 @@ $products = [
                     Beli Buket Spesial
                 </a>
             </div>
-        </div>
-    </section>
-
-    <section class="mt-xl px-md">
-        <div class="flex justify-between items-center mb-lg">
-            <h3 class="font-headline-md text-headline-md text-on-surface">Categories</h3>
-            <a href="katalog.php" class="font-label-md text-label-md text-primary hover:underline">View All</a>
-        </div>
-        <div class="flex gap-lg overflow-x-auto pb-4 custom-scrollbar snap-x">
-            <?php foreach ($categories as $category): ?>
-                <div class="flex-shrink-0 snap-start text-center group cursor-pointer" onclick="window.location.href='katalog.php'">
-                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-3 ring-2 ring-transparent group-hover:ring-primary/30 transition-all">
-                        <img alt="<?php echo htmlspecialchars($category['name']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="<?php echo $category['img']; ?>"/>
-                    </div>
-                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors"><?php echo htmlspecialchars($category['name']); ?></span>
-                </div>
-            <?php endforeach; ?>
         </div>
     </section>
 
