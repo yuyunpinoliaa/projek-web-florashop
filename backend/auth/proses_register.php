@@ -1,24 +1,52 @@
 <?php
 // proses_register.php
+require_once '../config/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
     $email    = $_POST['email'];
     $password = $_POST['password'];
+    $role     = 'user'; // default role
 
-    // TODO: Tambahkan validasi dan query INSERT ke database kamu di sini
-    // Contoh fiktif:
-    // $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    // $query = "INSERT INTO users (nama, email, password) VALUES ('$fullname', '$email', '$hashed_password')";
-    
-    // Jika proses berhasil, arahkan kembali ke login.php dengan pesan sukses
-    echo "<script>
+    // Validasi input tidak boleh kosong
+    if (empty($fullname) || empty($email) || empty($password)) {
+        echo "<script>
+            alert('Semua data wajib diisi!');
+            window.location.href = '../../frontend/pages/register.php';
+        </script>";
+        exit;
+    }
+
+    // Cek apakah email sudah terdaftar
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        echo "<script>
+            alert('Email sudah terdaftar!');
+            window.location.href = '../../frontend/pages/register.php';
+        </script>";
+        exit;
+    }
+
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Simpan ke database (nama kolom di database adalah 'name')
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
+    if ($stmt->execute([$fullname, $email, $hashed_password, $role])) {
+        echo "<script>
             alert('Akun berhasil dibuat! Silahkan login.');
-            window.location.href = 'login.php';
+            window.location.href = '../../frontend/pages/login.php';
           </script>";
+    } else {
+        echo "<script>
+            alert('Terjadi kesalahan saat registrasi.');
+            window.location.href = '../../frontend/pages/register.php';
+          </script>";
+    }
 } else {
     // Jika diakses langsung tanpa POST, tendang balik ke register.php
-    header("Location: register.php");
+    header("Location: ../../frontend/pages/register.php");
     exit();
 }
 ?>

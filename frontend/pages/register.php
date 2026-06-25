@@ -121,7 +121,7 @@
     <form action="../../backend/auth/proses_register.php" method="POST">
         <div class="input-group">
             <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullName" placeholder="John Doe" required>
+            <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
         </div>
 
         <div class="input-group">
