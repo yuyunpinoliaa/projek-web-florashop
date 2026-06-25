@@ -113,10 +113,8 @@ if (isset($_SESSION['user_id'])) {
     </script>
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
-    <!-- Global Layout Shell -->
     <main class="relative min-h-screen flex items-center justify-center px-md py-xl overflow-hidden">
         
-        <!-- Animated Background Elements -->
         <div class="absolute inset-0 z-0 pointer-events-none">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-[100px]"></div>
             <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-tertiary-fixed opacity-10 rounded-full blur-[100px]"></div>
@@ -129,11 +127,9 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
 
-        <!-- Auth Card Container -->
         <div class="relative z-10 w-full max-w-[440px] fade-in">
             <div class="glass-panel rounded-[32px] p-xl shadow-[0px_4px_20px_rgba(244,114,182,0.08)] border border-white/40">
                 
-                <!-- Brand Header -->
                 <div class="flex flex-col items-center mb-xl">
                     <div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mb-md shadow-sm">
                         <span class="material-symbols-outlined text-primary text-[32px]">local_florist</span>
@@ -142,13 +138,11 @@ if (isset($_SESSION['user_id'])) {
                     <p class="text-secondary font-label-md mt-xs">Curating moments of beauty</p>
                 </div>
 
-                <!-- Tab Toggle -->
                 <div class="flex p-xs bg-secondary-fixed/30 rounded-full mb-xl">
                     <button class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 bg-white text-primary shadow-sm">Sign In</button>
                     <a href="register.php" class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 text-secondary hover:text-primary text-center">Create Account</a>
                 </div>
 
-                <!-- Login Form -->
                 <form class="space-y-lg" action="../../backend/auth/proses_login.php" method="POST">
                     <div class="space-y-sm">
                         <label class="font-label-md text-secondary ml-xs" for="email">Email Address</label>
@@ -179,7 +173,6 @@ if (isset($_SESSION['user_id'])) {
                     </button>
                 </form>
 
-                <!-- Social Auth -->
                 <div class="mt-xl">
                     <div class="relative flex items-center justify-center mb-lg">
                         <div class="w-full border-t border-outline-variant/30"></div>
@@ -198,9 +191,10 @@ if (isset($_SESSION['user_id'])) {
                 </div>
             </div>
 
-            <!-- Bottom Support Text -->
             <p class="text-center mt-xl text-secondary font-label-md">
                 Need help? <a class="text-primary font-semibold hover:underline" href="#">Contact Florist Support</a>
             </p>
         </div>
     </main>
+</body>
+</html>
