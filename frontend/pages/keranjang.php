@@ -128,10 +128,17 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['name'
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
         <span class="text-xs mt-1">Cart</span>
     </a>
+    <?php if(isset($_SESSION['user_id'])): ?>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="profile.php">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-xs mt-1">Profile</span>
+    </a>
+    <?php else: ?>
     <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="login.php">
         <span class="material-symbols-outlined">person</span>
         <span class="text-xs mt-1">Profile</span>
     </a>
+    <?php endif; ?>
 </nav>
 
 <script>

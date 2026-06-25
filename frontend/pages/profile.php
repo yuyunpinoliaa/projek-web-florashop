@@ -8,6 +8,11 @@ require_once '../../backend/config/db.php';
 $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
+if (!$user) {
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
