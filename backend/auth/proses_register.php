@@ -34,9 +34,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Simpan ke database (nama kolom di database adalah 'name')
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
     if ($stmt->execute([$fullname, $email, $hashed_password, $role])) {
+        // Auto-login user after successful registration
+        $_SESSION['user_id'] = $conn->lastInsertId();
+        $_SESSION['user_name'] = $fullname;
+        $_SESSION['user_role'] = $role;
+
         echo "<script>
-            alert('Akun berhasil dibuat! Silahkan login.');
-            window.location.href = '../../frontend/pages/login.php';
+            alert('Akun berhasil dibuat!');
+            window.location.href = '../../frontend/pages/profile.php';
           </script>";
     } else {
         echo "<script>
