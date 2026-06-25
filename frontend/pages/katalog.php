@@ -231,10 +231,17 @@ session_start();
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="font-label-md text-label-md mt-1">Cart</span>
     </a>
+    <?php if(isset($_SESSION['user_id'])): ?>
+    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="profile.php">
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-label-md text-label-md mt-1"><?= htmlspecialchars(explode(' ', trim($_SESSION['user_name'] ?? 'User'))[0]) ?></span>
+    </a>
+    <?php else: ?>
     <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:text-primary transition-all" href="login.php">
         <span class="material-symbols-outlined">person</span>
         <span class="font-label-md text-label-md mt-1">Profile</span>
     </a>
+    <?php endif; ?>
 </nav>
 
 <script>
