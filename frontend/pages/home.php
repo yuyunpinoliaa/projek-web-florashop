@@ -49,15 +49,6 @@ $products = [
             <?php endforeach; ?>
         </div>
     </section>
-
-    <section class="mt-xxl mx-md py-xl bg-white rounded-3xl shadow-[0px_4px_20px_rgba(244,114,182,0.04)] text-center border border-pink-50">
-        <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Bergabung dengan Komunitas Kami</h3>
-        <p class="font-body-md text-secondary mb-8 max-w-md mx-auto">Berlangganan untuk penawaran eksklusif, tips perawatan bunga, dan akses lebih awal untuk koleksi musiman kami.</p>
-        <form action="" method="POST" class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
-            <input class="w-full md:flex-1 rounded-full border border-pink-100 bg-white px-6 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Alamat email Anda" type="email" name="email" required/>
-            <button type="submit" class="w-full md:w-auto bg-primary text-on-primary px-xl py-3 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">Berlangganan</button>
-        </form>
-    </section>
 </main>
 
 <?php 
