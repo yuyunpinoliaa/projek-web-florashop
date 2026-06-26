@@ -270,17 +270,9 @@ $total = $subtotal + $shipping_cost + $tax;
                         <div class="flex flex-wrap gap-md">
                             <input type="hidden" name="payment_method" id="paymentMethodInput" value="credit_card">
                             
-                            <button type="button" id="btn-cc" onclick="selectPayment('credit_card')" class="pay-method-btn flex-1 min-w-[140px] p-md border border-primary bg-primary/5 rounded-xl flex flex-col items-center gap-2 transition-all">
+                            <button type="button" id="btn-cc" class="pay-method-btn max-w-xs flex-1 min-w-[140px] p-md border border-primary bg-primary/5 rounded-xl flex flex-col items-center gap-2 transition-all">
                                 <span class="material-symbols-outlined text-primary">credit_card</span>
                                 <span class="font-label-md text-label-md">Kartu Kredit</span>
-                            </button>
-                            <button type="button" id="btn-paypal" onclick="selectPayment('paypal')" class="pay-method-btn flex-1 min-w-[140px] p-md border border-outline-variant/30 rounded-xl flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
-                                <span class="material-symbols-outlined text-secondary">payments</span>
-                                <span class="font-label-md text-label-md text-secondary">PayPal</span>
-                            </button>
-                            <button type="button" id="btn-apple" onclick="selectPayment('apple_pay')" class="pay-method-btn flex-1 min-w-[140px] p-md border border-outline-variant/30 rounded-xl flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
-                                <span class="material-symbols-outlined text-secondary">apps</span>
-                                <span class="font-label-md text-label-md text-secondary">Apple Pay</span>
                             </button>
                         </div>
                         
@@ -358,7 +350,6 @@ $total = $subtotal + $shipping_cost + $tax;
                     <div class="mt-lg pt-lg border-t border-outline-variant/20 flex justify-center gap-lg">
                         <img alt="Visa" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClhNHTyRU7G1wGQdXqkHizRMH56IVd7enhREtnpAGCegPYiQGyrLJ6Tb8kq7HSFA-ooIOWvIe3UxkiqfsjYRvRAQNeVxwObXgX0L9qZmis5ebNNiHzVj-7bfmBeRl0VUgxlK_0p4UYu5l1qMoODcwuL68uAHmtzDl3gxOubTfGvVyN6at6AaW34znt5wDK5Ab-gAnmAGCbvIJj3Bb11s-7Niwqv7riszAcC4qmHAU-fN_7J5ry69h83VYiz7qgz5w1nleAQXnl-QA"/>
                         <img alt="Mastercard" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbcY8VU3AKt6e6CfXj7a-W1g4buPdUt0ZDRwsre7lyHxae466YobgE1bSzhg6wW7xqxAbiBEBzkH07UxHlccA_6QqyYjGKcfD7hukyv_SIaAOfGS_bVZw6rfinD_CtzRxjRmgnYjsIzKzS2rnVqis4HQQ1aIqbBNU18SuC8a98tdiJCIRWm-9ldTqrfeGMMlzBznsjCl5pfybhF9ebYVVikHZxNp1CUynCowTXscYOkKcsK1Iwp2BvUT-QQQL2k8JVumMPb1XpfU"/>
-                        <img alt="PayPal" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCxLYegsGBenstNmJ6oodPXZ1ZeO3QgxINy80lpAC9AbEpEYSLs78Q9Idem71RtjovByNSrUU-FvnebSbT07qqSpovm1KurvRu2JOGzD1JobFhRD7bNuVzbNmnvtCYd1joUFCjfcA7bbOYaqIZPXcv1H4U71KMtHwn4vxvdKRDnSwTIWZQxl8hw0dmgQX8ZACkVLjfcQil9ikMAXU2YBtGzkHjGSK6hr74UnnHvGKg8qUtqeSAkFVjxA0o8WnPaAa-pn4_bYsk_Jo"/>
                     </div>
                 </div>
             </div>
@@ -416,28 +407,6 @@ $total = $subtotal + $shipping_cost + $tax;
             totalSummary.textContent = 'Rp ' + finalTotal.toLocaleString('id-ID');
         });
     });
-
-    // Manajemen pemilihan metode pembayaran
-    function selectPayment(method) {
-        document.getElementById('paymentMethodInput').value = method;
-        const buttons = document.querySelectorAll('.pay-method-btn');
-        buttons.forEach(btn => {
-            btn.classList.remove('border-primary', 'bg-primary/5');
-            btn.classList.add('border-outline-variant/30');
-            btn.querySelector('span').classList.replace('text-primary', 'text-secondary');
-        });
-
-        const activeBtn = document.getElementById(`btn-${method === 'credit_card' ? 'cc' : method === 'paypal' ? 'paypal' : 'apple'}`);
-        activeBtn.classList.add('border-primary', 'bg-primary/5');
-        activeBtn.querySelector('span').classList.replace('text-secondary', 'text-primary');
-
-        const ccForm = document.getElementById('creditCardForm');
-        if (method === 'credit_card') {
-            ccForm.classList.remove('hidden');
-        } else {
-            ccForm.classList.add('hidden');
-        }
-    }
 
     // Ajax handling submit form biar overlay pop-up sukses keluar sebelum pindah halaman
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
