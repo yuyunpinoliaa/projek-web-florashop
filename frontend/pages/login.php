@@ -192,6 +192,9 @@ if (isset($_SESSION['user_id'])) {
             </div>
 
             <p class="text-center mt-xl text-secondary font-label-md">
+                Are you an Admin? <a class="text-primary font-semibold hover:underline" href="login_admin.php">Admin Access</a>
+            </p>
+            <p class="text-center mt-sm text-secondary font-label-md">
                 Need help? <a class="text-primary font-semibold hover:underline" href="#">Contact Florist Support</a>
             </p>
         </div>

@@ -98,6 +98,11 @@ $all_products = [
     <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Florashop</h1>
     <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-primary text-[24px]">notifications</span>
+        <?php if(isset($_SESSION['user_id'])): ?>
+        <a href="profile.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Profile">person</a>
+        <?php else: ?>
+        <a href="login.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Login">person</a>
+        <?php endif; ?>
     </div>
 </header>
 
@@ -162,9 +167,9 @@ $all_products = [
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="text-[12px] mt-1">Cart</span>
     </a>
-    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary" href="login.php">
-        <span class="material-symbols-outlined">person</span>
-        <span class="text-[12px] mt-1">Profile</span>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary" href="login_admin.php">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+        <span class="text-[12px] mt-1">Admin</span>
     </a>
 </nav>
 

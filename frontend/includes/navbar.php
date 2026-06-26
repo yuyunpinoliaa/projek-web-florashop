@@ -111,7 +111,12 @@
 <button class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" data-icon="search">search</button>
 </div>
 <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Florashop</h1>
-<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
 <button class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" data-icon="notifications">notifications</button>
+<?php if(isset($_SESSION['user_id'])): ?>
+<a href="profile.php" class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" title="Profile">person</a>
+<?php else: ?>
+<a href="login.php" class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" title="Login">person</a>
+<?php endif; ?>
 </div>
 </header>

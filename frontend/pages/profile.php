@@ -179,10 +179,11 @@ if (!$user) {
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="font-label-md text-label-md mt-1">Cart</span>
     </a>
-    <a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-full px-4 py-1" href="profile.php">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
-        <span class="font-label-md text-label-md mt-1">Profile</span>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="login_admin.php">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+        <span class="font-label-md text-label-md mt-1">Admin</span>
     </a>
+
 </nav>
 </body>
 </html>

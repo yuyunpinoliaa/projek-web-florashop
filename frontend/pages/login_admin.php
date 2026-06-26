@@ -209,6 +209,9 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
             </div>
 
             <footer class="mt-lg text-center">
+                <p class="font-label-md text-secondary mb-sm">
+                    Are you a Customer? <a class="text-primary font-semibold hover:underline" href="login.php">Customer Login</a>
+                </p>
                 <p class="font-label-sm text-label-sm text-secondary">
                     © 2024 Florashop Boutique Floral Services. <br class="md:hidden"/>
                     <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a> • 

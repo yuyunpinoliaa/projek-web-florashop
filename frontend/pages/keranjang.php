@@ -53,7 +53,14 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['name'
         <a href="katalog.php" class="material-symbols-outlined text-primary text-[24px]">arrow_back</a>
     </div>
     <h1 class="text-xl font-bold text-primary mx-auto">Keranjang Belanja</h1>
-    <div class="w-6"></div>
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-[24px]">notifications</span>
+        <?php if(isset($_SESSION['user_id'])): ?>
+        <a href="profile.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Profile">person</a>
+        <?php else: ?>
+        <a href="login.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Login">person</a>
+        <?php endif; ?>
+    </div>
 </header>
 
 <main class="max-w-[800px] mx-auto px-4 mt-6">
@@ -128,17 +135,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['name'
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
         <span class="text-xs mt-1">Cart</span>
     </a>
-    <?php if(isset($_SESSION['user_id'])): ?>
-    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="profile.php">
-        <span class="material-symbols-outlined">person</span>
-        <span class="text-xs mt-1">Profile</span>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="login_admin.php">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+        <span class="text-xs mt-1">Admin</span>
     </a>
-    <?php else: ?>
-    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary transition-all" href="login.php">
-        <span class="material-symbols-outlined">person</span>
-        <span class="text-xs mt-1">Profile</span>
-    </a>
-    <?php endif; ?>
+
 </nav>
 
 <script>

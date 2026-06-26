@@ -1,142 +1,186 @@
 <?php
-// register.php
-// Kamu bisa sertakan file koneksi database di sini jika sudah ada
-// include '../../config/koneksi.php'; 
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header("Location: home.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Florashop - Create Account</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fcf6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#85145a",
+                        "secondary-container": "#e7dde3",
+                        "surface-container": "#e6eeff",
+                        "tertiary-container": "#51b269",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dac0c9",
+                        "outline": "#87717a",
+                        "on-secondary-fixed-variant": "#4b454a",
+                        "inverse-surface": "#27313f",
+                        "on-tertiary-fixed-variant": "#005323",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#6d0047",
+                        "secondary-fixed-dim": "#cec4ca",
+                        "secondary-fixed": "#eae0e6",
+                        "surface": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#a43073",
+                        "surface-dim": "#d0dbed",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#004019",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffd8e7",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-fixed": "#00210a",
+                        "on-surface": "#121c2a",
+                        "primary-fixed-dim": "#ffafd3",
+                        "primary": "#a43073",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#ffafd3",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#006d30",
+                        "surface-variant": "#d9e3f6",
+                        "on-background": "#121c2a",
+                        "secondary": "#635c61",
+                        "primary-container": "#f472b6",
+                        "on-secondary-fixed": "#1f1a1e",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#544249",
+                        "on-primary-fixed": "#3d0026",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d9e3f6",
+                        "tertiary-fixed-dim": "#79db8d",
+                        "on-secondary-container": "#686066",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#95f8a7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xxl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Literata"],
+                        "headline-lg": ["Literata"],
+                        "headline-lg-mobile": ["Literata"],
+                        "display-lg": ["Literata"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
         }
-        .register-container {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .logo-icon {
-            color: #d15b8f;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #70264b;
-            margin: 5px 0;
-        }
-        p.subtitle {
-            color: #8c8c8c;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        .auth-tabs {
-            display: flex;
-            background: #f5ecef;
-            border-radius: 30px;
-            padding: 5px;
-            margin-bottom: 25px;
-        }
-        .auth-tabs a {
-            flex: 1;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #8c8c8c;
-            transition: all 0.3s;
-        }
-        .auth-tabs a.active {
-            background: #ffffff;
-            color: #d15b8f;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .input-group label {
-            display: block;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 8px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e1d5da;
-            border-radius: 8px;
-            box-sizing: border-box;
-            background-color: #f9f6f7;
-            font-size: 14px;
-        }
-        .input-group input:focus {
-            outline: none;
-            border-color: #d15b8f;
-            background-color: #fff;
-        }
-        .btn-register {
-            background-color: #9c2c62;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .btn-register:hover {
-            background-color: #7a1f49;
-        }
-    </style>
+    </script>
 </head>
-<body>
-
-<div class="register-container">
-    <div class="logo-icon">🌸</div>
-    <h2>Florashop</h2>
-    <p class="subtitle">Curating moments of beauty</p>
-
-    <div class="auth-tabs">
-        <a href="login.php">Sign In</a>
-        <a href="register.php" class="active">Create Account</a>
-    </div>
-
-    <form action="../../backend/auth/proses_register.php" method="POST">
-        <div class="input-group">
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+    <main class="relative min-h-screen flex items-center justify-center px-md py-xl overflow-hidden">
+        
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-[100px]"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-tertiary-fixed opacity-10 rounded-full blur-[100px]"></div>
+            
+            <div class="absolute top-10 right-10 opacity-20 flower-float">
+                <img alt="Floral illustration" class="w-48 h-48 object-cover rounded-full rotate-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxaIRodT7bM9K2ppLDjxOnwbWtJTtnBZWcNtZpL-An6uyjW4-eVuwONlbDO15fsiUQvDcZHKJ7H-Bfj9F7lpWH1816frUsZXwZq1KLW4Y1dvGa4yGhvtq8Uglyg_3AwU6ZOjDlPKS3KffAqrlUpwYUPr5I1WmczcgP1KYybOtSh0SOAlkxcxy6mUMEPXCsFxBL7fO4nSCXeUgnnVoICsfVZM1fXAD6czkwuKuG13bqTgL_m0vB_Xfu6ixrwUSar6zRd-ACmJ8vBWg"/>
+            </div>
+            <div class="absolute bottom-20 left-10 opacity-15 flower-float" style="animation-delay: -2s;">
+                <img alt="Floral illustration" class="w-40 h-40 object-cover rounded-full -rotate-45" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkvtkD4qxxv-7_stuy04PtIP4wYJiigoE1Ja32xEShNU007gfwRbV9Io1psjed_w8qpaRI9Uy8LxDpdZSkmXpne1o3Hs9z3oehAwxzMRdd-fEk1BVBHe8iz_JwZIhtQVgr-kvATl3S_84mGO7faEEud87wV7YC4DIYHbkiOUU-zrDGpd_yJFRz-cKXsGggUAR5DksFhDj4nEMO2wEq3nE1nx56aWgmwHVGvtUK06w7ro4oSofBPgSjokDEDw2FdViyEmKhSo7UzN4"/>
+            </div>
         </div>
 
-        <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="yourname@florashop.com" required>
+        <div class="relative z-10 w-full max-w-[440px] fade-in">
+            <div class="glass-panel rounded-[32px] p-xl shadow-[0px_4px_20px_rgba(244,114,182,0.08)] border border-white/40">
+                
+                <div class="flex flex-col items-center mb-xl">
+                    <div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mb-md shadow-sm">
+                        <span class="material-symbols-outlined text-primary text-[32px]">local_florist</span>
+                    </div>
+                    <h1 class="font-headline-lg-mobile text-[28px] md:font-headline-lg md:text-[32px] font-semibold text-primary">Florashop</h1>
+                    <p class="text-secondary font-label-md mt-xs">Curating moments of beauty</p>
+                </div>
+
+                <div class="flex p-xs bg-secondary-fixed/30 rounded-full mb-xl">
+                    <a href="login.php" class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 text-secondary hover:text-primary text-center block leading-loose">Sign In</a>
+                    <button class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 bg-white text-primary shadow-sm leading-loose">Create Account</button>
+                </div>
+
+                <form class="space-y-lg" action="../../backend/auth/proses_register.php" method="POST">
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-secondary ml-xs" for="fullname">Full Name</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
+                            <input class="w-full pl-[48px] pr-md py-md bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50" id="fullname" name="fullname" placeholder="John Doe" type="text" required/>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-secondary ml-xs" for="email">Email Address</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+                            <input class="w-full pl-[48px] pr-md py-md bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50" id="email" name="email" placeholder="hello@example.com" type="email" required/>
+                        </div>
+                    </div>
+
+                    <div class="space-y-sm">
+                        <div class="flex justify-between items-center px-xs">
+                            <label class="font-label-md text-secondary" for="password">Password</label>
+                        </div>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+                            <input class="w-full pl-[48px] pr-[48px] py-md bg-white/50 border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-outline/50" id="password" name="password" placeholder="••••••••" type="password" required/>
+                        </div>
+                    </div>
+
+                    <button class="w-full py-md mt-6 bg-primary text-on-primary font-label-md rounded-full shadow-lg hover:bg-on-primary-fixed-variant active:scale-[0.98] transition-all transform duration-200" type="submit">
+                        Register
+                    </button>
+                </form>
+
+            </div>
+
+            <p class="text-center mt-xl text-secondary font-label-md">
+                Need help? <a class="text-primary font-semibold hover:underline" href="#">Contact Florist Support</a>
+            </p>
         </div>
-
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" required>
-        </div>
-
-        <button type="submit" class="btn-register">Register</button>
-    </form>
-</div>
-
+    </main>
 </body>
 </html>
