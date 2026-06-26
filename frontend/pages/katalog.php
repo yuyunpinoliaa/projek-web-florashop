@@ -1,51 +1,9 @@
 <?php
 session_start();
 
-// Data Master Produk (Nama Indonesia & Harga Rupiah)
-$all_products = [
-    [
-        'name' => 'Buket Mawar Merah Segar',
-        'price' => 185000,
-        'desc' => 'Rangkaian mawar merah asli yang fresh dan wangi, dipetik langsung',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5NnuNUAoGLVTQmVc3h-aK-lR05EllNdOAcWorexgwMRnjtZfLrSD8VUCA807bhBii_NyrJ4Sh7WgXFWW9vUtTkZQOiY2rBk4PlnrVM9GbSq1eHEZBnsMHNUOMhUoEEr1Dwrb_tpUahodD4uasyUPlWku6gtNtrm8AqS8BzuhpD8NTx67vzITqqsXKQNGDXgtVNtPHucKq2OwkqehLsPNdTRGnMKGA1zOBTmyENGB2hAt4PDhX3BDNcUtx6Cb-TyYi3cWKF6x9uHM',
-        'tag' => 'Premium'
-    ],
-    [
-        'name' => 'Buket Satin Rose Elegant',
-        'price' => 65000,
-        'desc' => 'Buket bunga mawar dari kain satin kerajinan tangan awet selamanya',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUqku_1rAE_kBk5pZDIiaY9DuQZlsijWRcKk_jcPTDpswVWlxSguqYk3g9QwtfHUNSGvGiZ92O_V00BOcM2HPv3BSjvD01XeA7XOzc_BSydJA3BRAFTooHIYt7VJD29dkdqAL8GqifVHIv3hCweo3o1_1Dxym6q-iVWFZPUuWrzGXnGU9BgH3VLHed70QoTJDYjOorcu3vJ5gPf4V10AkeTw5DK1u477KBVCpYw_g9IT6mh8dvHXOeDvA1xlQv4sMraA6t1usG1SM',
-        'tag' => 'Best Seller'
-    ],
-    [
-        'name' => 'Buket Fresh Sunflower',
-        'price' => 135000,
-        'desc' => 'Bunga matahari asli berukuran besar dikombinasikan dengan baby breath',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTOTQK0qUlxJogYOHu_crSwfBQ_j7LP-CiTs26N81y3T_ZJtRQpUNalI4Ghcc3rIswmEDVeuWRHyaSOyQQcc31wfiTBmI3RiK8C-rdG3cH_mwKID4IYU_jkG5poRcAh5D0uLIQ7QPXPo-0TRMlO52eeoJbxTAcRe6P9osxqQlykTjPMZW7zwNXsRlbbDYNyYK_xIy9fjAH5YNnctEfL-AEFGsgTppWIvL7M3Nd-UTpMnJWvv0UosCRKYqJQrKOr5AP6O-0ArroOV8',
-        'tag' => ''
-    ],
-    [
-        'name' => 'Buket Uang Money Bloom',
-        'price' => 150000,
-        'desc' => 'Buket uang kertas kosong/asli rangkai rapi untuk kado wisuda mewah',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuA14T4tD79K-C5sb6rneYZY9ncHh08H83PhLznPW8IsBnHlngG293bOhGcYvfIVeeNcd1gm6FJSBXH5GhR2CpxMYhzqmVgD5cbrlFf0jq3U6x38l21Jv5LEqiXZDVYqc7elJB0kX4MKs_cMVaYzVi8eY38CjWnCXP0x4Cdr6kGcNUg3wvIJeuOgcyvUmvdWtp5pCAP_pmHDlBhjAT2f7J6HBub66-7i0ahUVvJStbIVArtv0Avi4LFsIBVJJpAE4-PSp8xA_tJlPCo',
-        'tag' => 'Populer'
-    ],
-    [
-        'name' => 'Buket Artificial Daisy Lily',
-        'price' => 75000,
-        'desc' => 'Buket kombinasi bunga palsu tiruan berbahan plastik & kain premium',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDS4bVXbZMRUnDeOD5vC4NiFEhT0R-UKhUW2HeBDeFhGuwI4XEh-vCmHx5Oy6c7BV_n0vSzGy-qaWooLrYy9ggXf_OaM665tC8kueeixh-MrJ4MTXDyXbvfBSAK59lrvvvYd01dGD06dk0-0wLbRilOopkSB5DRA8GROmFTmJ0HThtE6OYCswKtr962fyRuGbt0h-Y0e_b45UsZ-_7_AX0Drl3dJHF0MO_aDpFaLL8w8JZPBij4wPVphCI8bRsE3Ck3L3qOlHK1-LM',
-        'tag' => ''
-    ],
-    [
-        'name' => 'Buket Satin Lavender Soft',
-        'price' => 55000,
-        'desc' => 'Rangkaian bunga satin warna ungu lavender cantik nan estetik',
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwSQvb6GE4xX9iuJHE7BMcVJMHJS7A1OqgqNjXBvD581t_DbFMiOo8Xirdg-jM6gtO_Km1bAa6DQJsPbdoCtT7rtYnrWIfK7_GlZuXlFEWV6pHdl_aZ2u9_mpVN6ngEkPDdSSMcWvbTQ1WDC36BkwxbuEP7C-tOZwSET7KGIh2HCYqf8Xz0GKkQ6fuP7FjOuE5948ablEU3ke2EnieEcmmC75c85HDfOGbJlDOPnMO2our05Xqa5_XKKZgEYDE05_jaHr1ivkKZOE',
-        'tag' => ''
-    ]
-];
+require_once '../../backend/config/db.php';
+$stmt = $conn->query("SELECT * FROM products WHERE status != 'Habis' ORDER BY id DESC");
+$all_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
@@ -138,7 +96,7 @@ $all_products = [
             </div>
             <div class="p-4 flex flex-col gap-1">
                 <h3 class="font-headline-md text-base text-on-surface group-hover:text-primary transition-colors truncate"><?php echo htmlspecialchars($product['name']); ?></h3>
-                <p class="font-body-md text-xs text-secondary truncate"><?php echo htmlspecialchars($product['desc']); ?></p>
+                <p class="font-body-md text-xs text-secondary truncate"><?php echo htmlspecialchars($product['description']); ?></p>
                 <div class="mt-2 flex items-center justify-between">
                     <span class="font-body-lg text-tertiary font-semibold">Rp <?php echo number_format($product['price'], 0, ',', '.'); ?></span>
                     <button class="btn-add-to-cart h-8 w-8 rounded-full bg-secondary-container/50 text-on-secondary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all active:scale-90"
