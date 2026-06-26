@@ -119,7 +119,7 @@ $all_products = [
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mt-lg" id="product-grid">
     <?php foreach ($all_products as $product): ?>
-        <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)]">
+        <div class="group product-card flex flex-col bg-white rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(244,114,182,0.08)] transition-all hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)] cursor-pointer" onclick="window.location.href='detail_produk.php?name=<?php echo urlencode($product['name']); ?>'">
             <div class="relative aspect-square overflow-hidden bg-gray-50">
                 <img class="product-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo $product['img']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>"/>
                 <button class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-md text-secondary hover:text-primary transition-colors">
@@ -175,6 +175,7 @@ $all_products = [
         addButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const productData = {
                     name: button.getAttribute('data-name'),
                     price: parseInt(button.getAttribute('data-price')),

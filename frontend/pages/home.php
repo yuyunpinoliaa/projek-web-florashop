@@ -36,7 +36,7 @@ $products = [
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg">
             <?php foreach ($products as $product): ?>
-                <div class="bg-surface group cursor-pointer relative" onclick="window.location.href='detail_produk.php'">
+                <div class="bg-surface group cursor-pointer relative" onclick="window.location.href='detail_produk.php?name=<?php echo urlencode($product['name']); ?>'">
                     <div class="aspect-square rounded-xl overflow-hidden mb-md shadow-[0px_4px_20px_rgba(244,114,182,0.08)] group-hover:shadow-[0px_10px_30px_rgba(244,114,182,0.15)] transition-all">
                         <img alt="<?php echo htmlspecialchars($product['name']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="<?php echo $product['img']; ?>"/>
                         <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all scale-0 group-hover:scale-100 duration-300">
