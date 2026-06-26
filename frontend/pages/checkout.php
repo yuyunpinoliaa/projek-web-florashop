@@ -4,25 +4,55 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Data dummy untuk simulasi item di keranjang belanja (Bisa diganti dengan $_SESSION['cart'])
-$cart_items = [
-    [
-        'id' => 1,
-        'name' => 'Blushing Peonies Bouquet',
-        'qty' => 1,
-        'price' => 84.00,
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrVcyG7hD70IVB5vKHuNHntz3Pa3N-Fa2hGUykIAHMXdJktQeU5gf9zv6_P1V5y5pOlndQHmDM7yt0-5R65S8gx0RgqYWZg0zIY2VEw4n7YUT86wX2Ri-sB4g5qtHPpc1JOcKPK1tsmy01NSBNU7Xpm6d9jLNO22AGQsCyuMftVjN4FJNTdeRZwDXRm1n4GiWwFtdMTRbVqT1b5HBA-B3B0qKGtUP61hsrZm7as4W4YsbAKub26hSHSwLdbr62XeBvNZWhnbHxDPM',
-        'alt' => 'A close-up photograph of soft, blushing pink peonies in a crystal vase.'
-    ],
-    [
-        'id' => 2,
-        'name' => 'Luna Ceramic Vase',
-        'qty' => 1,
-        'price' => 45.00,
-        'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqJ-zIw2zdrpjqwKs3XMmYdul5X44JdnvmTSTB-dWKExUe-Z17knUHdL2Ad9V_JJ7Cw-OibvAivSvJ2uW3aydBPUu2KR5YPB0eotG4PzSGpn282u_3efdMhMeql_BRuh8v3GhKR9PJbo6m1OkSoFnxg4SIT3YmfS2v0tH_BdkzBMxoSB7ny9hvEajvCG4kc7RXxA-eGOmEKIdxfCBNAMY_Gjhe6TcJfldlQ1ZAyGSv-VFurC7oMxcWRLV7A2XsovwAOphsLBSEuG8',
-        'alt' => 'A minimalist, sculptural white ceramic vase with a matte finish.'
-    ]
-];
+// Cek apakah data dikirim dari keranjang belanja
+$cart_items = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_items']) && is_array($_POST['selected_items']) && isset($_SESSION['cart'])) {
+    foreach ($_POST['selected_items'] as $index) {
+        if (isset($_SESSION['cart'][$index])) {
+            $session_item = $_SESSION['cart'][$index];
+            // Ambil quantity dari POST jika diubah di halaman keranjang
+            $qty = isset($_POST['quantity'][$index]) ? intval($_POST['quantity'][$index]) : intval($session_item['quantity']);
+            if ($qty < 1) $qty = 1;
+            
+            $cart_items[] = [
+                'id' => $index,
+                'name' => $session_item['name'],
+                'qty' => $qty,
+                'price' => floatval($session_item['price']),
+                'img' => $session_item['img'],
+                'alt' => htmlspecialchars($session_item['name'])
+            ];
+        }
+    }
+} elseif (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    // Jika di-refresh atau direct access tapi session cart ada, gunakan semua isi keranjang
+    foreach ($_SESSION['cart'] as $index => $session_item) {
+        $qty = intval($session_item['quantity']);
+        if ($qty < 1) $qty = 1;
+        $cart_items[] = [
+            'id' => $index,
+            'name' => $session_item['name'],
+            'qty' => $qty,
+            'price' => floatval($session_item['price']),
+            'img' => $session_item['img'],
+            'alt' => htmlspecialchars($session_item['name'])
+        ];
+    }
+}
+
+// Fallback ke data dummy jika keranjang kosong (untuk demo/keperluan preview)
+if (empty($cart_items)) {
+    $cart_items = [
+        [
+            'id' => 1,
+            'name' => 'Peony Merah Muda',
+            'qty' => 1,
+            'price' => 45000,
+            'img' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrVcyG7hD70IVB5vKHuNHntz3Pa3N-Fa2hGUykIAHMXdJktQeU5gf9zv6_P1V5y5pOlndQHmDM7yt0-5R65S8gx0RgqYWZg0zIY2VEw4n7YUT86wX2Ri-sB4g5qtHPpc1JOcKPK1tsmy01NSBNU7Xpm6d9jLNO22AGQsCyuMftVjN4FJNTdeRZwDXRm1n4GiWwFtdMTRbVqT1b5HBA-B3B0qKGtUP61hsrZm7as4W4YsbAKub26hSHSwLdbr62XeBvNZWhnbHxDPM',
+            'alt' => 'Foto jarak dekat bunga peoni merah muda lembut di dalam vas kristal.'
+        ]
+    ];
+}
 
 // Perhitungan Subtotal
 $subtotal = 0;
@@ -30,12 +60,12 @@ foreach ($cart_items as $item) {
     $subtotal += $item['price'] * $item['qty'];
 }
 
-$shipping_cost = 12.00; // Default: Fresh Morning Express
-$tax = 10.32;
+$shipping_cost = 30000; // Default: Ekspres Pagi Segar (Rp 30.000)
+$tax = round($subtotal * 0.10); // Pajak 10% dari Subtotal
 $total = $subtotal + $shipping_cost + $tax;
 ?>
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth" lang="id">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -156,7 +186,7 @@ $total = $subtotal + $shipping_cost + $tax;
     </div>
     <div class="flex items-center gap-sm">
         <span class="material-symbols-outlined text-secondary">lock</span>
-        <span class="font-label-md text-label-md text-secondary">SECURE CHECKOUT</span>
+        <span class="font-label-md text-label-md text-secondary">PEMBAYARAN AMAN</span>
     </div>
 </header>
 
@@ -170,9 +200,9 @@ $total = $subtotal + $shipping_cost + $tax;
                     <div class="flex items-center justify-between mb-lg">
                         <div class="flex items-center gap-sm">
                             <span class="bg-primary/10 text-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
-                            <h2 class="font-headline-md text-headline-md">Shipping Address</h2>
+                            <h2 class="font-headline-md text-headline-md">Alamat Pengiriman</h2>
                         </div>
-                        <button type="button" class="text-primary font-label-md text-label-md hover:underline">+ Add New</button>
+                        <button type="button" class="text-primary font-label-md text-label-md hover:underline">+ Tambah Baru</button>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-md" id="addressContainer">
@@ -180,27 +210,27 @@ $total = $subtotal + $shipping_cost + $tax;
 
                         <div data-address="HOME" class="address-card p-md bg-surface-container-lowest border border-primary rounded-xl ambient-shadow cursor-pointer transition-all active-ring">
                             <div class="flex justify-between items-start mb-sm">
-                                <span class="font-label-md text-label-md text-primary">HOME</span>
+                                <span class="font-label-md text-label-md text-primary">RUMAH</span>
                                 <span class="check-icon material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                             </div>
                             <p class="font-label-md text-label-md font-bold text-on-surface">Eleanor Pemberton</p>
                             <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">
-                                4821 Petal Lane, Garden District<br/>
-                                San Francisco, CA 94103<br/>
-                                United States
+                                Jl. Melati Raya No. 45, Kebayoran Baru<br/>
+                                Jakarta Selatan, DKI Jakarta 12110<br/>
+                                Indonesia
                             </p>
                         </div>
                         
                         <div data-address="WORK" class="address-card p-md bg-surface-container-lowest border border-outline-variant/30 rounded-xl hover:border-primary/50 transition-all cursor-pointer">
                             <div class="flex justify-between items-start mb-sm">
-                                <span class="font-label-md text-label-md text-secondary">WORK</span>
+                                <span class="font-label-md text-label-md text-secondary">KANTOR</span>
                                 <span class="check-icon hidden material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                             </div>
                             <p class="font-label-md text-label-md font-bold text-on-surface">Eleanor Pemberton</p>
                             <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">
-                                1000 Tech Plaza, Suite 400<br/>
-                                San Francisco, CA 94105<br/>
-                                United States
+                                Gedung Astra, Lantai 24, Jl. Jend. Sudirman<br/>
+                                Jakarta Pusat, DKI Jakarta 10220<br/>
+                                Indonesia
                             </p>
                         </div>
                     </div>
@@ -209,24 +239,24 @@ $total = $subtotal + $shipping_cost + $tax;
                 <section>
                     <div class="flex items-center gap-sm mb-lg">
                         <span class="bg-primary/10 text-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
-                        <h2 class="font-headline-md text-headline-md">Delivery Options</h2>
+                        <h2 class="font-headline-md text-headline-md">Opsi Pengiriman</h2>
                     </div>
                     <div class="space-y-md">
                         <label class="flex items-center p-md bg-surface-container-lowest border border-outline-variant/30 rounded-xl cursor-pointer hover:bg-primary/5 transition-colors group">
-                            <input checked="" class="w-5 h-5 text-primary border-outline focus:ring-primary" name="shipping_option" type="radio" value="express" data-cost="12.00"/>
+                            <input checked="" class="w-5 h-5 text-primary border-outline focus:ring-primary" name="shipping_option" type="radio" value="express" data-cost="30000"/>
                             <div class="ml-md flex-1">
-                                <p class="font-label-md text-label-md text-on-surface">Fresh Morning Express</p>
-                                <p class="text-xs text-on-surface-variant">Guaranteed delivery before 10:00 AM</p>
+                                <p class="font-label-md text-label-md text-on-surface">Ekspres Pagi Segar</p>
+                                <p class="text-xs text-on-surface-variant">Jaminan pengiriman sebelum jam 10.00 Pagi</p>
                             </div>
-                            <span class="font-label-md text-label-md text-tertiary">+$12.00</span>
+                            <span class="font-label-md text-label-md text-tertiary">+Rp <?php echo number_format(30000, 0, ',', '.'); ?></span>
                         </label>
                         <label class="flex items-center p-md bg-surface-container-lowest border border-outline-variant/30 rounded-xl cursor-pointer hover:bg-primary/5 transition-colors group">
-                            <input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="shipping_option" type="radio" value="standard" data-cost="0.00"/>
+                            <input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="shipping_option" type="radio" value="standard" data-cost="0"/>
                             <div class="ml-md flex-1">
-                                <p class="font-label-md text-label-md text-on-surface">Standard Boutique Delivery</p>
-                                <p class="text-xs text-on-surface-variant">Arrival between 1:00 PM - 5:00 PM</p>
+                                <p class="font-label-md text-label-md text-on-surface">Pengiriman Standar Butik</p>
+                                <p class="text-xs text-on-surface-variant">Tiba antara pukul 13.00 - 17.00</p>
                             </div>
-                            <span class="font-label-md text-label-md text-on-surface-variant">FREE</span>
+                            <span class="font-label-md text-label-md text-on-surface-variant">GRATIS</span>
                         </label>
                     </div>
                 </section>
@@ -234,7 +264,7 @@ $total = $subtotal + $shipping_cost + $tax;
                 <section>
                     <div class="flex items-center gap-sm mb-lg">
                         <span class="bg-primary/10 text-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
-                        <h2 class="font-headline-md text-headline-md">Payment Method</h2>
+                        <h2 class="font-headline-md text-headline-md">Metode Pembayaran</h2>
                     </div>
                     <div class="space-y-md">
                         <div class="flex flex-wrap gap-md">
@@ -242,7 +272,7 @@ $total = $subtotal + $shipping_cost + $tax;
                             
                             <button type="button" id="btn-cc" onclick="selectPayment('credit_card')" class="pay-method-btn flex-1 min-w-[140px] p-md border border-primary bg-primary/5 rounded-xl flex flex-col items-center gap-2 transition-all">
                                 <span class="material-symbols-outlined text-primary">credit_card</span>
-                                <span class="font-label-md text-label-md">Credit Card</span>
+                                <span class="font-label-md text-label-md">Kartu Kredit</span>
                             </button>
                             <button type="button" id="btn-paypal" onclick="selectPayment('paypal')" class="pay-method-btn flex-1 min-w-[140px] p-md border border-outline-variant/30 rounded-xl flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
                                 <span class="material-symbols-outlined text-secondary">payments</span>
@@ -256,7 +286,7 @@ $total = $subtotal + $shipping_cost + $tax;
                         
                         <div id="creditCardForm" class="mt-lg space-y-md">
                             <div>
-                                <label class="block font-label-md text-label-md text-on-surface-variant mb-1">Card Number</label>
+                                <label class="block font-label-md text-label-md text-on-surface-variant mb-1">Nomor Kartu</label>
                                 <div class="relative">
                                     <input name="card_number" class="w-full px-md py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all bg-surface-container-lowest" placeholder="**** **** **** 4242" type="text"/>
                                     <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary cursor-pointer">visibility</span>
@@ -264,7 +294,7 @@ $total = $subtotal + $shipping_cost + $tax;
                             </div>
                             <div class="grid grid-cols-2 gap-md">
                                 <div>
-                                    <label class="block font-label-md text-label-md text-on-surface-variant mb-1">Expiry Date</label>
+                                    <label class="block font-label-md text-label-md text-on-surface-variant mb-1">Tanggal Kedaluwarsa</label>
                                     <input name="card_expiry" class="w-full px-md py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all bg-surface-container-lowest" placeholder="MM/YY" type="text"/>
                                 </div>
                                 <div>
@@ -279,7 +309,7 @@ $total = $subtotal + $shipping_cost + $tax;
             
             <div class="lg:col-span-4">
                 <div class="sticky top-24 bg-surface-container-lowest p-lg rounded-2xl ambient-shadow border border-outline-variant/10">
-                    <h3 class="font-headline-md text-headline-md mb-lg">Order Summary</h3>
+                    <h3 class="font-headline-md text-headline-md mb-lg">Ringkasan Pesanan</h3>
                     
                     <div class="space-y-md mb-lg max-h-64 overflow-y-auto no-scrollbar">
                         <?php foreach ($cart_items as $item): ?>
@@ -289,8 +319,8 @@ $total = $subtotal + $shipping_cost + $tax;
                             </div>
                             <div class="flex-1">
                                 <p class="font-label-md text-label-md text-on-surface"><?php echo htmlspecialchars($item['name']); ?></p>
-                                <p class="text-sm text-on-surface-variant">Qty: <?php echo $item['qty']; ?></p>
-                                <p class="font-label-md text-label-md text-tertiary mt-1">$<?php echo number_format($item['price'], 2); ?></p>
+                                <p class="text-sm text-on-surface-variant">Jumlah: <?php echo $item['qty']; ?></p>
+                                <p class="font-label-md text-label-md text-tertiary mt-1">Rp <?php echo number_format($item['price'], 0, ',', '.'); ?></p>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -299,29 +329,29 @@ $total = $subtotal + $shipping_cost + $tax;
                     <div class="border-t border-outline-variant/30 pt-lg space-y-md">
                         <div class="flex justify-between text-on-surface-variant">
                             <span class="font-body-md text-body-md">Subtotal</span>
-                            <span class="font-body-md text-body-md">$<?php echo number_format($subtotal, 2); ?></span>
+                            <span class="font-body-md text-body-md">Rp <?php echo number_format($subtotal, 0, ',', '.'); ?></span>
                         </div>
                         <div class="flex justify-between text-on-surface-variant">
-                            <span class="font-body-md text-body-md">Shipping</span>
-                            <span id="shippingSummary" class="font-body-md text-body-md">$<?php echo number_format($shipping_cost, 2); ?></span>
+                            <span class="font-body-md text-body-md">Pengiriman</span>
+                            <span id="shippingSummary" class="font-body-md text-body-md">Rp <?php echo number_format($shipping_cost, 0, ',', '.'); ?></span>
                         </div>
                         <div class="flex justify-between text-on-surface-variant">
-                            <span class="font-body-md text-body-md">Tax</span>
-                            <span class="font-body-md text-body-md">$<?php echo number_format($tax, 2); ?></span>
+                            <span class="font-body-md text-body-md">Pajak</span>
+                            <span class="font-body-md text-body-md">Rp <?php echo number_format($tax, 0, ',', '.'); ?></span>
                         </div>
                         <div class="flex justify-between items-center pt-md border-t border-primary/20">
                             <span class="font-headline-md text-headline-md text-on-surface">Total</span>
-                            <span id="totalSummary" class="font-headline-md text-headline-md text-primary">$<?php echo number_format($total, 2); ?></span>
+                            <span id="totalSummary" class="font-headline-md text-headline-md text-primary">Rp <?php echo number_format($total, 0, ',', '.'); ?></span>
                         </div>
                     </div>
                     
                     <div class="mt-xl space-y-md">
                         <button type="submit" class="w-full py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md uppercase tracking-widest shadow-lg hover:shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                            Place Order
+                            Buat Pesanan
                         </button>
                         <p class="text-center text-[10px] text-on-surface-variant flex items-center justify-center gap-1">
                             <span class="material-symbols-outlined text-xs">shield</span>
-                            Encrypted 256-bit SSL Secure Payment
+                            Pembayaran Aman Terenkripsi SSL 256-bit
                         </p>
                     </div>
                     
@@ -341,10 +371,10 @@ $total = $subtotal + $shipping_cost + $tax;
         <div class="w-20 h-20 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mx-auto mb-lg">
             <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
         </div>
-        <h2 class="font-headline-lg text-headline-lg text-primary mb-md">Order Placed!</h2>
-        <p class="text-on-surface-variant mb-xl">Your beautiful flowers are being prepared. We've sent a confirmation to your email.</p>
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-md">Pesanan Berhasil!</h2>
+        <p class="text-on-surface-variant mb-xl">Bunga indah Anda sedang disiapkan. Kami telah mengirimkan konfirmasi ke email Anda.</p>
         <button class="w-full py-3 border-2 border-primary text-primary rounded-full font-label-md text-label-md hover:bg-primary/5 transition-colors" onclick="location.reload()">
-            Back to Home
+            Kembali ke Beranda
         </button>
     </div>
 </div>
@@ -381,9 +411,9 @@ $total = $subtotal + $shipping_cost + $tax;
     shippingRadios.forEach(radio => {
         radio.addEventListener('change', (e) => {
             const cost = parseFloat(e.target.getAttribute('data-cost'));
-            shippingSummary.textContent = `$${cost.toFixed(2)}`;
+            shippingSummary.textContent = cost === 0 ? 'GRATIS' : 'Rp ' + cost.toLocaleString('id-ID');
             const finalTotal = subtotal + cost + tax;
-            totalSummary.textContent = `$${finalTotal.toFixed(2)}`;
+            totalSummary.textContent = 'Rp ' + finalTotal.toLocaleString('id-ID');
         });
     });
 
@@ -413,7 +443,7 @@ $total = $subtotal + $shipping_cost + $tax;
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = this.querySelector('button[type="submit"]');
-        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Memproses...';
         btn.disabled = true;
 
         const formData = new FormData(this);
@@ -429,14 +459,14 @@ $total = $subtotal + $shipping_cost + $tax;
                 document.getElementById('success-overlay').classList.add('opacity-100');
             } else {
                 alert('Terjadi kesalahan: ' + data.message);
-                btn.innerHTML = 'Place Order';
+                btn.innerHTML = 'Buat Pesanan';
                 btn.disabled = false;
             }
         })
         .catch(error => {
             console.error('Error:', error);
             alert('Gagal memproses pesanan.');
-            btn.innerHTML = 'Place Order';
+            btn.innerHTML = 'Buat Pesanan';
             btn.disabled = false;
         });
     });
