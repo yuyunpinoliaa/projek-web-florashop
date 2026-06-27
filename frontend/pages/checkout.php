@@ -424,8 +424,16 @@ $total = $subtotal + $shipping_cost + $tax;
         .then(response => response.json())
         .then(data => {
             if(data.status === 'success') {
-                document.getElementById('success-overlay').classList.remove('opacity-0', 'pointer-events-none');
-                document.getElementById('success-overlay').classList.add('opacity-100');
+                // Tampilkan overlay sukses sementara, lalu redirect ke halaman notifikasi
+                const overlay = document.getElementById('success-overlay');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+
+                // Redirect ke halaman notifikasi setelah animasi singkat
+                setTimeout(() => {
+                    const orderId = data.order_id || '';
+                    window.location.href = 'order_success.php?order_id=' + orderId;
+                }, 1500);
             } else {
                 alert('Terjadi kesalahan: ' + data.message);
                 btn.innerHTML = 'Buat Pesanan';

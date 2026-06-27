@@ -131,10 +131,14 @@ try {
     // Kosongkan keranjang setelah checkout berhasil
     unset($_SESSION['cart']);
 
+    // Simpan order_id ke session untuk digunakan di halaman notifikasi
+    $_SESSION['last_order_id'] = $order_id;
+
     echo json_encode([
-        'status'   => 'success',
-        'message'  => 'Pesanan berhasil dibuat!',
-        'order_id' => $order_id
+        'status'    => 'success',
+        'message'   => 'Pesanan berhasil dibuat!',
+        'order_id'  => $order_id,
+        'redirect'  => '../frontend/pages/order_success.php?order_id=' . $order_id
     ]);
 
 } catch (PDOException $e) {
