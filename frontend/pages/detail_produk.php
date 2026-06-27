@@ -172,10 +172,17 @@ $product = isset($product_details[$product_name_get]) ? $product_details[$produc
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="text-[11px] mt-0.5">Cart</span>
     </a>
-    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary" href="login.php">
+    <?php if(isset($_SESSION['user_id'])): ?>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary" href="profile.php">
         <span class="material-symbols-outlined">person</span>
         <span class="text-[11px] mt-0.5">Profile</span>
     </a>
+    <?php else: ?>
+    <a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:text-primary" href="login.php">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[11px] mt-0.5">Login</span>
+    </a>
+    <?php endif; ?>
 </nav>
 
 <script>
