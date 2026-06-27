@@ -110,17 +110,7 @@ if (!$user) {
     <!-- Dompet & Layanan (Wallet & Services) -->
     <section class="bg-white mt-2 px-4 py-3 shadow-sm">
         <h3 class="font-semibold text-[15px] text-gray-800 mb-3">Dompet Saya</h3>
-        <div class="grid grid-cols-4 gap-2">
-            <div class="flex flex-col items-center gap-1 border-r border-gray-100 last:border-0">
-                <span class="material-symbols-outlined text-[28px] text-primary">account_balance</span>
-                <span class="text-[12px] text-gray-800 font-semibold">FloraPay</span>
-                <span class="text-[11px] text-gray-500">Rp0</span>
-            </div>
-            <div class="flex flex-col items-center gap-1 border-r border-gray-100 last:border-0">
-                <span class="material-symbols-outlined text-[28px] text-yellow-500">monetization_on</span>
-                <span class="text-[12px] text-gray-800 font-semibold">Koin Flora</span>
-                <span class="text-[11px] text-gray-500">0 Koin</span>
-            </div>
+        <div class="grid grid-cols-2 gap-2">
             <div class="flex flex-col items-center gap-1 border-r border-gray-100 last:border-0">
                 <span class="material-symbols-outlined text-[28px] text-green-500">confirmation_number</span>
                 <span class="text-[12px] text-gray-800 font-semibold">Voucher Saya</span>
