@@ -185,5 +185,29 @@ if (!$user) {
     </a>
 
 </nav>
+<?php if (isset($_SESSION['flash_message'])): ?>
+    <!-- Toast Notification -->
+    <div id="toast-message" class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] bg-white px-4 py-3 rounded-full shadow-lg border border-primary/20 flex items-center space-x-3 transition-all duration-500 translate-y-[-150%] opacity-0">
+        <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+        <span class="font-label-md text-sm text-on-surface"><?php echo htmlspecialchars($_SESSION['flash_message']); ?></span>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = document.getElementById('toast-message');
+            // Show toast
+            setTimeout(() => {
+                toast.classList.remove('translate-y-[-150%]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            }, 100);
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-150%]', 'opacity-0');
+            }, 3000);
+        });
+    </script>
+    <?php unset($_SESSION['flash_message']); ?>
+<?php endif; ?>
 </body>
 </html>

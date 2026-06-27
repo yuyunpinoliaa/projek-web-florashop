@@ -14,10 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_name'] = $user['name'] ?? $user['full_name'];
         $_SESSION['user_role'] = $user['role'];
         
-        echo "<script>
-            alert('Login berhasil!');
-            window.location.href = '../../frontend/pages/profile.php';
-        </script>";
+        $_SESSION['flash_message'] = 'Login berhasil!';
+        header('Location: ../../frontend/pages/profile.php');
+        exit();
     } else {
         echo "<script>
             alert('Email atau password salah!');
