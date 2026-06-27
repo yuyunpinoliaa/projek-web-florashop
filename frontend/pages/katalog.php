@@ -6,11 +6,26 @@ $stmt = $conn->query("SELECT * FROM products WHERE status != 'Habis' ORDER BY id
 $all_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $unread_count = 0;
-if (isset($_SESSION['user_id'])) {
+$my_orders = isset($_SESSION['my_orders']) ? $_SESSION['my_orders'] : [];
+
+if (isset($_SESSION['user_id']) || !empty($my_orders)) {
     try {
-        $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE user_id = :uid AND is_read = 0");
-        $unread_stmt->execute([':uid' => $_SESSION['user_id']]);
-        $unread_count = $unread_stmt->fetchColumn();
+        if (isset($_SESSION['user_id']) && !empty($my_orders)) {
+            $in_query = implode(',', array_fill(0, count($my_orders), '?'));
+            $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE (user_id = ? OR order_id IN ($in_query)) AND is_read = 0");
+            $params = array_merge([$_SESSION['user_id']], $my_orders);
+            $unread_stmt->execute($params);
+            $unread_count = $unread_stmt->fetchColumn();
+        } elseif (isset($_SESSION['user_id'])) {
+            $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE user_id = ? AND is_read = 0");
+            $unread_stmt->execute([$_SESSION['user_id']]);
+            $unread_count = $unread_stmt->fetchColumn();
+        } else {
+            $in_query = implode(',', array_fill(0, count($my_orders), '?'));
+            $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE order_id IN ($in_query) AND is_read = 0");
+            $unread_stmt->execute($my_orders);
+            $unread_count = $unread_stmt->fetchColumn();
+        }
     } catch (PDOException $e) {
         $unread_count = 0;
     }
