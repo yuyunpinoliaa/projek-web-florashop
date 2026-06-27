@@ -1,23 +1,41 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
-}
 
 require_once '../../backend/config/db.php';
 
-// Fetch notifications before marking them as read (so we can highlight new ones in this load)
-try {
-    $notif_stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = :uid ORDER BY created_at DESC");
-    $notif_stmt->execute([':uid' => $_SESSION['user_id']]);
-    $notifications = $notif_stmt->fetchAll(PDO::FETCH_ASSOC);
+$notifications = [];
+$my_orders = isset($_SESSION['my_orders']) ? $_SESSION['my_orders'] : [];
 
-    // Mark them as read for future visits
-    $update_stmt = $conn->prepare("UPDATE notifications SET is_read = 1 WHERE user_id = :uid AND is_read = 0");
-    $update_stmt->execute([':uid' => $_SESSION['user_id']]);
-} catch (PDOException $e) {
-    $notifications = [];
+if (isset($_SESSION['user_id']) || !empty($my_orders)) {
+    try {
+        if (isset($_SESSION['user_id']) && !empty($my_orders)) {
+            $in_query = implode(',', array_fill(0, count($my_orders), '?'));
+            $notif_stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? OR order_id IN ($in_query) ORDER BY created_at DESC");
+            $params = array_merge([$_SESSION['user_id']], $my_orders);
+            $notif_stmt->execute($params);
+            $notifications = $notif_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $update_stmt = $conn->prepare("UPDATE notifications SET is_read = 1 WHERE (user_id = ? OR order_id IN ($in_query)) AND is_read = 0");
+            $update_stmt->execute($params);
+        } elseif (isset($_SESSION['user_id'])) {
+            $notif_stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = :uid ORDER BY created_at DESC");
+            $notif_stmt->execute([':uid' => $_SESSION['user_id']]);
+            $notifications = $notif_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $update_stmt = $conn->prepare("UPDATE notifications SET is_read = 1 WHERE user_id = :uid AND is_read = 0");
+            $update_stmt->execute([':uid' => $_SESSION['user_id']]);
+        } else {
+            $in_query = implode(',', array_fill(0, count($my_orders), '?'));
+            $notif_stmt = $conn->prepare("SELECT * FROM notifications WHERE order_id IN ($in_query) ORDER BY created_at DESC");
+            $notif_stmt->execute($my_orders);
+            $notifications = $notif_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $update_stmt = $conn->prepare("UPDATE notifications SET is_read = 1 WHERE order_id IN ($in_query) AND is_read = 0");
+            $update_stmt->execute($my_orders);
+        }
+    } catch (PDOException $e) {
+        $notifications = [];
+    }
 }
 ?>
 <!DOCTYPE html>
