@@ -1,92 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florashop - Login Admin</title>
-    <style>
-        /* Style sederhana agar tampilannya mirip seperti desain aslimu */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
-        }
-        .login-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #666;
-            font-size: 14px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background-color: #f0f4f9; /* Warna soft blue/gray mirip di foto */
-            font-size: 16px;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .btn-signin {
-            width: 100%;
-            padding: 14px;
-            background-color: #9d2a6e; /* Warna ungu/magenta Florashop */
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-        .btn-signin:hover {
-            background-color: #822059;
-        }
-    </style>
-</head>
-<body>
+<?php
+// backend/auth/proses_login_admin.php
+session_start();
 
-    <div class="login-card">
-        <div class="login-title">Login Admin</div>
-        
-        <form action="proses_login_admin.php" method="POST">
-            <div class="input-group">
-                <label for="username">Username / Email</label>
-                <input type="text" id="username" name="username" placeholder="Masukkan username" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="••••••••" required>
-            </div>
-            
-            <button type="submit" class="btn-signin">Sign In</button>
-        </form>
-    </div>
+// Cek jika form dikirim menggunakan metode POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $remember = isset($_POST['remember']);
 
-</body>
-</html>
+    // Validasi input sederhana
+    if (empty($email) || empty($password)) {
+        $_SESSION['login_error'] = 'Email dan password wajib diisi.';
+        header('Location: ../../frontend/pages/login_admin.php');
+        exit();
+    }
+
+    /* CONTOH IMPLEMENTASI DATABASE:
+       $query = "SELECT * FROM admins WHERE email = ?";
+       $stmt = $db->prepare($query);
+       $stmt->bind_param('s', $email);
+       $stmt->execute();
+       $result = $stmt->get_result();
+       $admin = $result->fetch_assoc();
+    */
+
+    // Hardcoded Kredensial Mocking untuk Demo Administrasi Florashop
+    $mock_admin_email = 'admin@florashop.com';
+    // Di database, password harus disimpan dalam bentuk hash (contoh: password_hash('admin123', PASSWORD_BCRYPT))
+    $mock_admin_password_hash = password_hash('admin123', PASSWORD_BCRYPT); 
+
+    if ($email === $mock_admin_email && password_verify($password, $mock_admin_password_hash)) {
+        // Login berhasil, buat session admin
+        $_SESSION['admin_logged_in'] = true;
+        $_SESSION['admin_email'] = $email;
+
+        // Jika 'Stay signed in' dicentang, buat cookie (berlaku 30 hari)
+        if ($remember) {
+            setcookie('admin_email', $email, time() + (86400 * 30), "/");
+        }
+
+        // Alihkan ke halaman dashboard admin utama
+        header('Location: ../../frontend/pages/dashboard_admin.php');
+        exit();
+    } else {
+        // Login gagal, set pesan kesalahan ke dalam session
+        $_SESSION['login_error'] = 'Kredensial salah. Akses ditolak.';
+        header('Location: ../../frontend/pages/login_admin.php');
+        exit();
+    }
+} else {
+    // Jika diakses langsung tanpa POST, kembalikan ke halaman login
+    header('Location: ../../frontend/pages/login_admin.php');
+    exit();
+}
