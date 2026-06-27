@@ -15,7 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_role'] = $user['role'];
         
         $_SESSION['flash_message'] = 'Login berhasil!';
-        header('Location: ../../frontend/pages/profile.php');
+        echo "<script>
+            window.location.href = '../../frontend/pages/profile.php';
+        </script>";
         exit();
     } else {
         echo "<script>
