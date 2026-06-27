@@ -19,11 +19,11 @@ if (isset($_SESSION['login_error'])) {
 $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['admin_email']) : '';
 ?>
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="id">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Florashop - Admin Login</title>
+    <title>Florashop - Login Admin</title>
     
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -147,7 +147,7 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
                     <span class="material-symbols-outlined text-primary text-[32px]">local_florist</span>
                 </div>
                 <h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Florashop</h1>
-                <p class="font-label-md text-label-md text-secondary tracking-widest uppercase">Admin Access Only</p>
+                <p class="font-label-md text-label-md text-secondary tracking-widest uppercase">Khusus Akses Admin</p>
             </header>
 
             <div class="glass-panel border border-outline-variant/30 rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.05)] p-xl relative overflow-hidden">
@@ -163,7 +163,7 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
                 <form action="../../backend/auth/proses_login_admin.php" method="POST" class="space-y-lg">
                     
                     <div class="space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant block px-xs" for="email">Admin Email</label>
+                        <label class="font-label-md text-label-md text-on-surface-variant block px-xs" for="email">Email Admin</label>
                         <div class="relative group">
                             <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
                             <input class="w-full pl-[48px] pr-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface transition-all duration-200 hover:border-primary/50 focus:border-primary" id="email" name="email" placeholder="admin@florashop.com" type="email" value="<?php echo $remembered_email; ?>" required/>
@@ -172,8 +172,8 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
 
                     <div class="space-y-xs">
                         <div class="flex justify-between items-end px-xs">
-                            <label class="font-label-md text-label-md text-on-surface-variant block" for="password">Password</label>
-                            <a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">Forgot?</a>
+                            <label class="font-label-md text-label-md text-on-surface-variant block" for="password">Kata Sandi</label>
+                            <a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">Lupa?</a>
                         </div>
                         <div class="relative group">
                             <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
@@ -186,11 +186,11 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
 
                     <div class="flex items-center space-x-sm px-xs">
                         <input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all cursor-pointer" id="remember" name="remember" type="checkbox" <?php echo !empty($remembered_email) ? 'checked' : ''; ?>/>
-                        <label class="font-label-md text-label-md text-secondary cursor-pointer" for="remember">Stay signed in on this device</label>
+                        <label class="font-label-md text-label-md text-secondary cursor-pointer" for="remember">Tetap masuk di perangkat ini</label>
                     </div>
 
                     <button class="w-full bg-primary text-on-primary py-md px-lg rounded-full font-label-md text-label-md shadow-md hover:bg-primary/90 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-sm group" type="submit">
-                        <span>Authorize Access</span>
+                        <span>Otorisasi Akses</span>
                         <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
                 </form>
@@ -198,24 +198,24 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
                 <div class="mt-xl pt-lg border-t border-outline-variant/30 flex items-center justify-center space-x-md text-outline">
                     <div class="flex items-center space-x-xs">
                         <span class="material-symbols-outlined text-[16px]">verified_user</span>
-                        <span class="text-[11px] font-label-sm uppercase tracking-tighter">Secure 256-bit AES</span>
+                        <span class="text-[11px] font-label-sm uppercase tracking-tighter">Aman 256-bit AES</span>
                     </div>
                     <div class="w-1 h-1 bg-outline-variant rounded-full"></div>
                     <div class="flex items-center space-x-xs">
                         <span class="material-symbols-outlined text-[16px]">history</span>
-                        <span class="text-[11px] font-label-sm uppercase tracking-tighter">Log Monitored</span>
+                        <span class="text-[11px] font-label-sm uppercase tracking-tighter">Log Dipantau</span>
                     </div>
                 </div>
             </div>
 
             <footer class="mt-lg text-center">
                 <p class="font-label-md text-secondary mb-sm">
-                    Are you a Customer? <a class="text-primary font-semibold hover:underline" href="login.php">Customer Login</a>
+                    Apakah Anda Pelanggan? <a class="text-primary font-semibold hover:underline" href="login.php">Login Pelanggan</a>
                 </p>
                 <p class="font-label-sm text-label-sm text-secondary">
                     © 2024 Florashop Boutique Floral Services. <br class="md:hidden"/>
-                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a> • 
-                    <a class="hover:text-primary transition-colors" href="#">Security Standards</a>
+                    <a class="hover:text-primary transition-colors" href="#">Kebijakan Privasi</a> • 
+                    <a class="hover:text-primary transition-colors" href="#">Standar Keamanan</a>
                 </p>
             </footer>
         </div>
@@ -227,9 +227,9 @@ $remembered_email = isset($_COOKIE['admin_email']) ? htmlspecialchars($_COOKIE['
             <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
             <div class="absolute bottom-xl left-xl right-xl text-white">
                 <blockquote class="font-headline-md text-headline-md mb-sm drop-shadow-md">
-                    "Cultivating beauty through organized growth."
+                    "Menumbuhkan keindahan melalui pertumbuhan yang terorganisir."
                 </blockquote>
-                <p class="font-label-md text-label-md opacity-90 tracking-wider uppercase">Administrative Portal</p>
+                <p class="font-label-md text-label-md opacity-90 tracking-wider uppercase">Portal Administratif</p>
             </div>
         </div>
     </div>
