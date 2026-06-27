@@ -14,6 +14,13 @@ require_once '../../backend/config/db.php';
 $stmt = $conn->query("SELECT * FROM products ORDER BY id DESC");
 $catalog_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $total_products = count($catalog_items);
+
+// Pending orders count for sidebar badge
+try {
+    $pending_orders = $conn->query("SELECT COUNT(*) FROM orders WHERE status = 'Menunggu'")->fetchColumn();
+} catch (PDOException $e) {
+    $pending_orders = 0;
+}
 ?>
 <!DOCTYPE html>
 <html class="light" lang="id">
@@ -90,9 +97,12 @@ $total_products = count($catalog_items);
                     <span class="material-symbols-outlined">inventory_2</span>
                     <span class="font-label-md font-semibold">Manajemen Katalog</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
+                <a href="pesanan_admin.php" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="font-label-md font-semibold">Pesanan</span>
+                    <?php if ($pending_orders > 0): ?>
+                    <span class="ml-auto bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full"><?php echo $pending_orders; ?></span>
+                    <?php endif; ?>
                 </a>
                 <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">people</span>

@@ -15,6 +15,18 @@ $stmt = $conn->query("SELECT * FROM products ORDER BY id DESC LIMIT 5");
 $recent_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $total_products = $conn->query("SELECT COUNT(*) FROM products")->fetchColumn();
+
+// Order stats
+try {
+    $total_active_orders = $conn->query("SELECT COUNT(*) FROM orders WHERE status IN ('Menunggu','Diproses','Dikirim')")->fetchColumn();
+    $pending_orders = $conn->query("SELECT COUNT(*) FROM orders WHERE status = 'Menunggu'")->fetchColumn();
+    $today_revenue_raw = $conn->query("SELECT COALESCE(SUM(total),0) FROM orders WHERE status = 'Selesai' AND DATE(created_at) = CURDATE()")->fetchColumn();
+    $today_revenue = floatval($today_revenue_raw);
+} catch (PDOException $e) {
+    $total_active_orders = 0;
+    $pending_orders = 0;
+    $today_revenue = 0;
+}
 ?>
 <!DOCTYPE html>
 <html class="light" lang="id">
@@ -91,9 +103,12 @@ $total_products = $conn->query("SELECT COUNT(*) FROM products")->fetchColumn();
                     <span class="material-symbols-outlined">inventory_2</span>
                     <span class="font-label-md font-semibold">Manajemen Katalog</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
+                <a href="pesanan_admin.php" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="font-label-md font-semibold">Pesanan</span>
+                    <?php if ($pending_orders > 0): ?>
+                    <span class="ml-auto bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full"><?php echo $pending_orders; ?></span>
+                    <?php endif; ?>
                 </a>
                 <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">people</span>
@@ -164,7 +179,7 @@ $total_products = $conn->query("SELECT COUNT(*) FROM products")->fetchColumn();
                     </div>
                     <div>
                         <p class="text-sm text-secondary font-label-md">Pesanan Aktif</p>
-                        <p class="text-2xl font-headline-md font-bold text-on-surface">12</p>
+                        <p class="text-2xl font-headline-md font-bold text-on-surface"><?php echo $total_active_orders; ?></p>
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/20 flex items-center space-x-4">
@@ -173,7 +188,7 @@ $total_products = $conn->query("SELECT COUNT(*) FROM products")->fetchColumn();
                     </div>
                     <div>
                         <p class="text-sm text-secondary font-label-md">Pendapatan (Hari Ini)</p>
-                        <p class="text-2xl font-headline-md font-bold text-on-surface">Rp 1.45M</p>
+                        <p class="text-2xl font-headline-md font-bold text-on-surface">Rp <?php echo number_format($today_revenue, 0, ',', '.'); ?></p>
                     </div>
                 </div>
             </div>
