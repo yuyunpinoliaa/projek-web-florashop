@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+require_once '../../backend/config/db.php';
+
+$unread_count = 0;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE user_id = :uid AND is_read = 0");
+        $unread_stmt->execute([':uid' => $_SESSION['user_id']]);
+        $unread_count = $unread_stmt->fetchColumn();
+    } catch (PDOException $e) {
+        $unread_count = 0;
+    }
+}
+
 // Proses jika ada request hapus barang dari keranjang via URL (Optional)
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['name'])) {
     $target_name = $_GET['name'];
@@ -54,7 +67,12 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['name'
     </div>
     <h1 class="text-xl font-bold text-primary mx-auto">Keranjang Belanja</h1>
     <div class="flex items-center gap-2">
-        <span class="material-symbols-outlined text-primary text-[24px]">notifications</span>
+        <a href="notifikasi.php" class="relative text-primary hover:bg-primary/5 p-1 rounded-full active:scale-95 duration-200 flex items-center justify-center" title="Notifications" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">notifications</span>
+            <?php if ($unread_count > 0): ?>
+                <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white animate-pulse"></span>
+            <?php endif; ?>
+        </a>
         <?php if(isset($_SESSION['user_id'])): ?>
         <a href="profile.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Profile">person</a>
         <?php else: ?>

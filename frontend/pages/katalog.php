@@ -4,6 +4,17 @@ session_start();
 require_once '../../backend/config/db.php';
 $stmt = $conn->query("SELECT * FROM products WHERE status != 'Habis' ORDER BY id DESC");
 $all_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$unread_count = 0;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE user_id = :uid AND is_read = 0");
+        $unread_stmt->execute([':uid' => $_SESSION['user_id']]);
+        $unread_count = $unread_stmt->fetchColumn();
+    } catch (PDOException $e) {
+        $unread_count = 0;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
@@ -55,7 +66,12 @@ $all_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Florashop</h1>
     <div class="flex items-center gap-2">
-        <span class="material-symbols-outlined text-primary text-[24px]">notifications</span>
+        <a href="notifikasi.php" class="relative text-primary hover:bg-primary/5 p-1 rounded-full active:scale-95 duration-200 flex items-center justify-center" title="Notifications" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">notifications</span>
+            <?php if ($unread_count > 0): ?>
+                <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-[#f8f9ff] animate-pulse"></span>
+            <?php endif; ?>
+        </a>
         <?php if(isset($_SESSION['user_id'])): ?>
         <a href="profile.php" class="material-symbols-outlined text-primary text-[24px] hover:opacity-80 transition-opacity" title="Profile">person</a>
         <?php else: ?>

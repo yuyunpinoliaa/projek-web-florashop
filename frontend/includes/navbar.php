@@ -1,3 +1,20 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../../backend/config/db.php';
+
+$unread_count = 0;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $unread_stmt = $conn->prepare("SELECT COUNT(*) FROM notifications WHERE user_id = :uid AND is_read = 0");
+        $unread_stmt->execute([':uid' => $_SESSION['user_id']]);
+        $unread_count = $unread_stmt->fetchColumn();
+    } catch (PDOException $e) {
+        $unread_count = 0;
+    }
+}
+?>
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
@@ -112,7 +129,12 @@
 </div>
 <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Florashop</h1>
 <div class="flex items-center gap-2">
-<button class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" data-icon="notifications">notifications</button>
+<a href="notifikasi.php" class="relative material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200 flex items-center justify-center" title="Notifications" style="text-decoration: none;">
+notifications
+<?php if ($unread_count > 0): ?>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white animate-pulse"></span>
+<?php endif; ?>
+</a>
 <?php if(isset($_SESSION['user_id'])): ?>
 <a href="profile.php" class="material-symbols-outlined text-primary hover:bg-primary/5 transition-colors p-2 rounded-full active:scale-95 duration-200" title="Profile">person</a>
 <?php else: ?>
