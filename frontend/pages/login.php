@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header("Location: home.php");
+    header("Location: profile.php");
     exit;
 }
 ?>
@@ -139,8 +139,8 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="flex p-xs bg-secondary-fixed/30 rounded-full mb-xl">
-                    <button class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 bg-white text-primary shadow-sm">Sign In</button>
-                    <a href="register.php" class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 text-secondary hover:text-primary text-center">Create Account</a>
+                    <a href="login.php" class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 bg-white text-primary shadow-sm text-center block">Sign In</a>
+                    <a href="register.php" class="flex-1 py-sm px-md rounded-full font-label-md transition-all duration-300 text-secondary hover:text-primary text-center block">Create Account</a>
                 </div>
 
                 <form class="space-y-lg" action="../../backend/auth/proses_login.php" method="POST">
