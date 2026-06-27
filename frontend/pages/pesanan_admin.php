@@ -241,6 +241,16 @@ try {
                     <?php echo htmlspecialchars($_GET['error']); ?>
                 </div>
             <?php endif; ?>
+            <?php if(!empty($db_error)): ?>
+                <div class="bg-error-container text-on-error-container p-4 rounded-xl mb-4 font-semibold shadow-sm flex flex-col gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[20px]">error</span>
+                        <span>Kesalahan Database: Gagal memuat data pesanan.</span>
+                    </div>
+                    <p class="text-xs font-mono bg-black/5 p-2 rounded"><?php echo htmlspecialchars($db_error); ?></p>
+                </div>
+            <?php endif; ?>
+
 
             <!-- Stats Cards -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
