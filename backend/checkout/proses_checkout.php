@@ -128,23 +128,27 @@ try {
     // Commit transaksi
     $conn->commit();
 
-    // Buat notifikasi awal untuk user (jika login)
-    if ($user_id) {
-        try {
-            $order_display = sprintf('FLR-%05d', $order_id);
-            $notif_stmt = $conn->prepare("
-                INSERT INTO notifications (user_id, order_id, title, message)
-                VALUES (:user_id, :order_id, :title, :message)
-            ");
-            $notif_stmt->execute([
-                ':user_id'  => $user_id,
-                ':order_id' => $order_id,
-                ':title'    => 'Pesanan Berhasil Dibuat',
-                ':message'  => "Pesanan {$order_display} Anda berhasil dibuat dan sedang menunggu konfirmasi."
-            ]);
-        } catch (Exception $e) {
-            // Silently ignore notification failure
-        }
+    // Simpan order_id ke dalam session untuk pelacakan (baik login maupun tamu)
+    if (!isset($_SESSION['my_orders'])) {
+        $_SESSION['my_orders'] = [];
+    }
+    $_SESSION['my_orders'][] = intval($order_id);
+
+    // Buat notifikasi awal untuk user / tamu
+    try {
+        $order_display = sprintf('FLR-%05d', $order_id);
+        $notif_stmt = $conn->prepare("
+            INSERT INTO notifications (user_id, order_id, title, message)
+            VALUES (:user_id, :order_id, :title, :message)
+        ");
+        $notif_stmt->execute([
+            ':user_id'  => $user_id, // Bisa NULL jika tamu
+            ':order_id' => $order_id,
+            ':title'    => 'Pesanan Berhasil Dibuat',
+            ':message'  => "Pesanan {$order_display} Anda berhasil dibuat dan sedang menunggu konfirmasi."
+        ]);
+    } catch (Exception $e) {
+        // Silently ignore notification failure
     }
 
     // Kosongkan keranjang setelah checkout berhasil

@@ -56,7 +56,7 @@ try {
         $conn->exec("
             CREATE TABLE IF NOT EXISTS notifications (
                 id          INT AUTO_INCREMENT PRIMARY KEY,
-                user_id     INT NOT NULL,
+                user_id     INT DEFAULT NULL,
                 order_id    INT NOT NULL,
                 title       VARCHAR(255) NOT NULL,
                 message     TEXT NOT NULL,
@@ -66,6 +66,12 @@ try {
                 FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         ");
+    } else {
+        try {
+            $conn->exec("ALTER TABLE notifications MODIFY user_id INT DEFAULT NULL");
+        } catch (PDOException $ex) {
+            // Silently handle if it's already nullable
+        }
     }
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());

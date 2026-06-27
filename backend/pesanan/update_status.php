@@ -39,8 +39,8 @@ try {
             $user_stmt->execute([':id' => $order_id]);
             $order_user = $user_stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($order_user && !empty($order_user['user_id'])) {
-                $user_id = intval($order_user['user_id']);
+            if ($order_user) {
+                $user_id = !empty($order_user['user_id']) ? intval($order_user['user_id']) : null;
                 $order_display = sprintf('FLR-%05d', $order_id);
                 $title = "Status Pesanan Diperbarui";
                 $message = "";
