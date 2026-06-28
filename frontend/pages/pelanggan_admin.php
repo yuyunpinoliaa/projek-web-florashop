@@ -192,12 +192,7 @@ try {
                                class="pl-10 pr-4 py-2 rounded-full border border-outline-variant/40 text-sm focus:ring-primary focus:border-primary bg-surface-container/50 w-56">
                     </div>
                 </form>
-                <button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors relative">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <?php if ($pending_orders > 0): ?>
-                    <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
-                    <?php endif; ?>
-                </button>
+
             </div>
         </header>
 
