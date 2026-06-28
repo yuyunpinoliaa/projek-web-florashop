@@ -101,15 +101,7 @@ if (isset($_SESSION['user_id']) || !empty($my_orders)) {
     <p class="font-body-md text-body-md text-secondary mt-xs max-w-lg">Temukan bunga sempurna untuk setiap kesempatan, dipilih langsung untuk kesegaran dan keindahan.</p>
 </div>
 
-<div class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md py-4 -mx-md px-md overflow-x-auto no-scrollbar flex items-center justify-end">
-    <div class="flex items-center gap-2 border border-outline-variant/50 rounded-full px-4 py-2 bg-white">
-        <span class="font-label-md text-label-md text-secondary">Sort by:</span>
-        <select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-primary cursor-pointer p-0">
-            <option>Recommended</option>
-            <option>Price: Low to High</option>
-        </select>
-    </div>
-</div>
+
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mt-lg" id="product-grid">
     <?php foreach ($all_products as $product): ?>
