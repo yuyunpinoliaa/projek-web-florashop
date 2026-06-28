@@ -172,7 +172,7 @@ try {
                     <span class="material-symbols-outlined">people</span>
                     <span class="font-label-md font-semibold">Pelanggan</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
+                <a href="pengaturan_admin.php" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">settings</span>
                     <span class="font-label-md font-semibold">Pengaturan</span>
                 </a>
