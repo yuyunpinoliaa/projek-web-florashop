@@ -141,10 +141,7 @@ try {
                 <h1 class="font-headline-md text-lg font-semibold">Manajemen Katalog</h1>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors relative">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
-                </button>
+
             </div>
         </header>
 
