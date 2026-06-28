@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_name'] = $fullname;
         $_SESSION['user_role'] = $role;
 
-        $_SESSION['flash_message'] = 'Akun berhasil dibuat!';
-        
-        // Redirect ke profil setelah sesi diatur
-        header('Location: ../../frontend/pages/profile.php');
+        echo "<script>
+            alert('Registrasi berhasil!');
+            window.location.href = '../../frontend/pages/profile.php';
+        </script>";
         exit();
     } else {
         echo "<script>
