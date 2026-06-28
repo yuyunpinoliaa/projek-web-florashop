@@ -110,7 +110,7 @@ try {
                     <span class="ml-auto bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full"><?php echo $pending_orders; ?></span>
                     <?php endif; ?>
                 </a>
-                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
+                <a href="pelanggan_admin.php" class="flex items-center space-x-3 px-4 py-3 text-secondary hover:bg-surface-container rounded-xl transition-colors">
                     <span class="material-symbols-outlined">people</span>
                     <span class="font-label-md font-semibold">Pelanggan</span>
                 </a>
