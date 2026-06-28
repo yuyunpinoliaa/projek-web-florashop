@@ -18,10 +18,7 @@
 </a>
 
 </nav>
-<!-- Floating Action Button: Search or Add -->
-<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
-<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
-</button>
+
 <script>
         // Micro-interactions and subtle effects
         document.querySelectorAll('a, button').forEach(el => {
