@@ -28,6 +28,7 @@
             background-color: var(--secondary);
             color: var(--dark);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* Navbar */
@@ -37,6 +38,9 @@
             align-items: center;
             padding: 2rem 5%;
             background-color: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .nav-logo {
@@ -54,12 +58,16 @@
         
         .nav-links li {
             font-size: 0.9rem;
-            color: var(--gray);
             font-weight: 500;
-            cursor: pointer;
         }
         
-        .nav-links li:hover {
+        .nav-links li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links li a:hover {
             color: var(--dark);
         }
 
@@ -133,7 +141,7 @@
             font-weight: 600;
         }
 
-        /* Tim Pengembang (Dari versi sebelumnya agar tidak hilang) */
+        /* Content Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -151,16 +159,38 @@
         h2 {
             font-size: 1.8rem;
             color: var(--dark);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 1rem;
         }
 
+        h3 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p, ul, ol {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        ol, ul.content-list {
+            margin-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tim Pengembang */
         .team-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             list-style: none;
+            margin-left: 0;
         }
 
         .team-member {
@@ -189,12 +219,12 @@
     <nav>
         <a href="#" class="nav-logo">Dokumentasi Sistem</a>
         <ul class="nav-links">
-            <li>Panduan</li>
-            <li>Desain</li>
-            <li>Teknologi</li>
-            <li>Tim</li>
-            <li>Roadmap</li>
-            <li>FAQ</li>
+            <li><a href="#panduan-fitur">Panduan</a></li>
+            <li><a href="#desain">Desain</a></li>
+            <li><a href="#teknologi">Teknologi</a></li>
+            <li><a href="#tim-pengembang">Tim</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#faq">FAQ</a></li>
         </ul>
     </nav>
 
@@ -216,7 +246,45 @@
     </div>
 
     <div class="container">
-        <!-- Bagian Tim Pengembang yang sudah kita buat sebelumnya -->
+        
+        <!-- Panduan Fitur -->
+        <section id="panduan-fitur">
+            <h2>Panduan Penggunaan</h2>
+            <p>Berikut adalah panduan lengkap cara menggunakan sistem Florashop, baik untuk pembeli maupun admin toko.</p>
+            
+            <h3>Panduan Pembeli (Pelanggan)</h3>
+            <ol>
+                <li><strong>Melihat Katalog:</strong> Kunjungi halaman utama untuk melihat daftar koleksi bunga.</li>
+                <li><strong>Detail Produk:</strong> Klik pada foto atau nama bunga untuk melihat informasi detail dan harga.</li>
+                <li><strong>Pendaftaran/Login:</strong> Buat akun baru atau login menggunakan akun yang sudah ada untuk bisa melakukan transaksi.</li>
+            </ol>
+
+            <h3>Panduan Administrator</h3>
+            <ol>
+                <li><strong>Login Admin:</strong> Akses halaman login khusus admin dan masukkan username serta password Anda.</li>
+                <li><strong>Dashboard:</strong> Setelah masuk, Anda akan diarahkan ke dashboard admin.</li>
+                <li><strong>Manajemen Produk:</strong> Anda dapat menambah bunga baru, mengedit harga/stok, atau menghapus produk dari katalog.</li>
+            </ol>
+        </section>
+
+        <!-- Desain -->
+        <section id="desain">
+            <h2>Desain & Arsitektur</h2>
+            <p>Sistem ini dirancang dengan pendekatan arsitektur <em>Client-Server</em> yang sederhana namun handal. Antarmuka pengguna (UI) dibuat responsif agar dapat diakses dengan nyaman melalui perangkat desktop maupun mobile.</p>
+        </section>
+
+        <!-- Teknologi -->
+        <section id="teknologi">
+            <h2>Teknologi yang Digunakan</h2>
+            <ul class="content-list">
+                <li><strong>Frontend:</strong> HTML5, CSS3, dan Vanilla JavaScript.</li>
+                <li><strong>Backend:</strong> PHP Native.</li>
+                <li><strong>Database:</strong> MySQL (Relational Database).</li>
+                <li><strong>Server Lingkungan:</strong> XAMPP / Apache.</li>
+            </ul>
+        </section>
+
+        <!-- Tim Pengembang -->
         <section id="tim-pengembang">
             <h2>Tim Pengembang</h2>
             <ul class="team-list">
@@ -242,6 +310,26 @@
                 </li>
             </ul>
         </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap">
+            <h2>Roadmap Pengembangan</h2>
+            <ul class="content-list">
+                <li><strong>Fase 1:</strong> Integrasi fitur keranjang belanja dan checkout.</li>
+                <li><strong>Fase 2:</strong> Integrasi API Payment Gateway untuk pembayaran otomatis.</li>
+                <li><strong>Fase 3:</strong> Fitur pelacakan status pesanan secara real-time.</li>
+            </ul>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <h2>FAQ (Tanya Jawab)</h2>
+            <h3>Apakah sistem ini bisa digunakan di HP?</h3>
+            <p>Ya, desain antarmuka sistem Florashop sudah dibuat responsif sehingga menyesuaikan dengan layar perangkat mobile.</p>
+            <h3>Bagaimana cara admin mereset password?</h3>
+            <p>Saat ini fitur reset password harus dilakukan langsung oleh Database Administrator melalui database MySQL. Fitur reset otomatis akan hadir pada update selanjutnya.</p>
+        </section>
+
     </div>
 
 </body>
