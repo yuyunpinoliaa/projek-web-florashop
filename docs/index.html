@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokumentasi Sistem Florashop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -16,122 +16,209 @@
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(0,0,0,.08);
         }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
+        
         body {
             background-color: var(--secondary);
             color: var(--dark);
             line-height: 1.6;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background-color: var(--secondary);
         }
-        header {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        header h1 {
+        
+        .nav-logo {
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
         }
-        section {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
         }
-        h2 {
+        
+        .nav-links li {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .nav-links li:hover {
             color: var(--dark);
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
             margin-bottom: 1.5rem;
         }
-        h3 {
-            color: var(--primary-dark);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
+
+        .hero-content p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
         }
-        ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
-        li {
-            margin-bottom: 0.5rem;
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
         }
+
+        /* Hero Card */
+        .hero-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card ul {
+            list-style: none;
+        }
+
+        .hero-card ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .hero-card ul li strong {
+            font-weight: 600;
+        }
+
+        /* Tim Pengembang (Dari versi sebelumnya agar tidak hilang) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        section {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
         .team-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
             list-style: none;
-            margin-left: 0;
         }
+
         .team-member {
             background: var(--secondary);
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 1.5rem;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid var(--border);
         }
+
         .team-member strong {
             display: block;
-            color: var(--primary);
+            color: var(--dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member span {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Dokumentasi Florashop</h1>
-            <p>Panduan Penggunaan dan Informasi Sistem</p>
-        </header>
 
-        <section id="gambaran-umum">
-            <h2>1. Gambaran Umum Sistem</h2>
-            <p><strong>Nama Sistem:</strong> Web Florashop</p>
-            <p><strong>Tujuan dan Manfaat:</strong> Platform penjualan bunga (florist) secara online untuk memudahkan pelanggan melihat katalog dan melakukan pemesanan.</p>
-            <p><strong>Target Pengguna:</strong> Pelanggan (pembeli) dan Admin (pengelola toko).</p>
-            <h3>Fitur-fitur yang Tersedia:</h3>
+    <nav>
+        <a href="#" class="nav-logo">Dokumentasi Sistem</a>
+        <ul class="nav-links">
+            <li>Panduan</li>
+            <li>Desain</li>
+            <li>Teknologi</li>
+            <li>Tim</li>
+            <li>Roadmap</li>
+            <li>FAQ</li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Dokumentasi Sistem Florashop</h1>
+            <p>Portal dokumentasi resmi yang berisi panduan penggunaan, desain arsitektur, informasi teknis, roadmap, serta tim pengembang sistem.</p>
+            <a href="#panduan-fitur" class="btn-primary">Mulai Membaca</a>
+        </div>
+        <div class="hero-card">
+            <h3>Informasi Sistem</h3>
             <ul>
-                <li>Katalog Produk Bunga</li>
-                <li>Detail Produk</li>
-                <li>Keranjang Belanja (Opsional/Sesuai fitur)</li>
-                <li>Dashboard Admin untuk manajemen produk</li>
-                <li>Sistem Autentikasi (Login/Logout)</li>
+                <li><strong>Nama Sistem:</strong> Sistem Web Florashop V.1</li>
+                <li><strong>Versi:</strong> 1.0.0</li>
+                <li><strong>Status:</strong> Production</li>
+                <li><strong>Last Update:</strong> Juni 2026</li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section id="panduan-fitur">
-            <h2>2. Panduan Penggunaan Fitur (Alur Sistem)</h2>
-            
-            <h3>A. Panduan Pelanggan</h3>
-            <ol>
-                <li><strong>Melihat Katalog:</strong> Pengguna membuka halaman utama (home) untuk melihat daftar bunga yang tersedia.</li>
-                <li><strong>Detail Bunga:</strong> Pengguna dapat mengklik salah satu produk untuk melihat detail lebih lanjut.</li>
-            </ol>
-
-            <h3>B. Panduan Administrator</h3>
-            <ol>
-                <li><strong>Login Admin:</strong> Admin mengakses halaman login dan memasukkan kredensial.</li>
-                <li><strong>Dashboard Admin:</strong> Setelah login, admin masuk ke dashboard.</li>
-                <li><strong>Kelola Produk:</strong> Admin dapat menambah, mengubah, atau menghapus data produk bunga dari database.</li>
-                <li><strong>Logout:</strong> Admin dapat keluar dari sistem dengan aman.</li>
-            </ol>
-            <p><em>*Catatan: Panduan ini dapat disesuaikan lebih lanjut dengan alur sistem (flow diagram) yang sebenarnya.</em></p>
-        </section>
-
+    <div class="container">
+        <!-- Bagian Tim Pengembang yang sudah kita buat sebelumnya -->
         <section id="tim-pengembang">
-            <h2>3. Tim Pengembang</h2>
+            <h2>Tim Pengembang</h2>
             <ul class="team-list">
                 <li class="team-member">
                     <strong>Yuyun Finolia</strong>
@@ -156,5 +243,6 @@
             </ul>
         </section>
     </div>
+
 </body>
 </html>
